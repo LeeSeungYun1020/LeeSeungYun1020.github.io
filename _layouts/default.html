@@ -1,15 +1,12 @@
----
-layout: default
-title: "Test Page"
-permalink: /test
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-    <h1>{{ "Hello World!" | downcase }}</h1>
+    {% include navigation.html %}
+    {{ content }}
 </body>
 </html>
