@@ -1,3 +1,24 @@
+html {
+  margin: 0 10%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+// header
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .current {
   color: green;
+}
+
+// footer
+.icon-box {
+  font-size: 24px;
 }

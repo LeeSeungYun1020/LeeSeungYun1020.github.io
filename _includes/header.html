@@ -1,0 +1,18 @@
+<header class="header">
+    <div>
+        <a class="header-logo" href="{{ '/' | relative_url }}">
+            <div class="header-logo-box">
+                이승윤
+            </div>
+        </a>
+    </div>
+    <div>
+        <nav class="header-navigation">
+            {% for item in site.data.navigation %}
+            <a href="{{ item.link }}" class="header-link{% if page.url == item.link %} current{% endif %}">
+                {{ item.name }}
+            </a>
+            {% endfor %}
+        </nav>
+    </div>
+</header>
