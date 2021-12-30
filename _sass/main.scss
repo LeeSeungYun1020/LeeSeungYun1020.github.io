@@ -1,5 +1,5 @@
 html {
-  margin: 0 10%;
+  margin: 0 0;
 }
 
 a {
@@ -12,10 +12,18 @@ a {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  background: black;
+  padding: 0 10%;
+  box-sizing: border-box;
+  color: white;
 }
 
-.current {
+.header-current-tab {
   color: green;
+}
+
+.header-tab {
+  color: grey;
 }
 
 // footer
