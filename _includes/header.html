@@ -7,12 +7,14 @@
         </a>
     </div>
     <div>
-        <nav class="header-navigation">
+        <ul class="header-navigation">
             {% for item in site.data.navigation %}
-            <a href="{{ item.link }}" class="header-link{% if page.url == item.link %} header-current-tab{% else %} header-tab{% endif %}">
-                {{ item.name }}
-            </a>
+            <li class="header-tab-box {% if page.url == item.link %} header-current-tab-box{% endif %}">
+                <a href="{{ item.link }}" class="header-link header-tab{% if page.url == item.link %} header-current-tab{% endif %}">
+                    {{ item.name }}
+                </a>
+            </li>
             {% endfor %}
-        </nav>
+        </ul>
     </div>
 </header>
