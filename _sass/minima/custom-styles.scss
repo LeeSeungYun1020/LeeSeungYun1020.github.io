@@ -33,6 +33,7 @@ a {
   height: auto;
   min-height: 100%;
   position: relative;
+  padding-bottom: var(--footer-height);
   box-sizing: border-box;
 }
 
@@ -107,6 +108,8 @@ a {
   background: var(--background-color);
   color: var(--background-font-color);
   box-sizing: border-box;
+  position: absolute;
+  transform : translateY(-100%);
 }
 
 
