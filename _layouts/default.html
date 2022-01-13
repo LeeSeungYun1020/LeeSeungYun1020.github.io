@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
@@ -10,9 +10,10 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
-    {% include header.html %}
-    {{ content }}
-
+    <div class="main-content">
+        {% include header.html %}
+        {{ content }}
+    </div>
     {% include footer.html %}
 </body>
 </html>
