@@ -1,6 +1,8 @@
-- name: Home
+- name: 메인
   link: /
-- name: Test
-  link: /test
-- name: Category
+- name: 소개
+  link: /about
+- name: 카테고리
   link: /category
+- name: 문서
+  link: /docs
