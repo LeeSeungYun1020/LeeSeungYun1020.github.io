@@ -114,9 +114,15 @@ a {
 
 
 .footer-icon-box {
-  font-size: 24px;
+  font-size: medium;
+  color: white;
 }
 
 .footer-icon {
   color: var(--background-font-color);
+}
+
+.footer-icon-link {
+  color: var(--background-font-color);
+  margin-right: 16px;
 }
