@@ -2,25 +2,6 @@
 layout: default
 ---
 
-{% assign headings_split = content | split: "<h" %}
-{% for line in headings_split %}
-    <p>{{ line }}</p>
-    {% case line[0] %}
-    {% when '1' %}
-        <p>h1 {{line}}</p>
-    {% when '2' %}
-
-    {% when '3' %}
-
-    {% when '4' %}
-
-    {% when '5' %}
-
-    {% when '6' %}
-
-    {% endcase %}
-{% endfor %}
-
 <div class="post-layout">
 <article class="post-article">
     <h1>{{ page.title }}</h1>
@@ -39,6 +20,54 @@ layout: default
     {{ content }}
 </article>
 <aside class="post-sidebar">
+    <div class="post-toc">
+        <ul class="post-toc-list">
+            {% assign current_level = '1' %}
+            {% assign headings_split = content | split: "<h" %}
+            {% for line in headings_split %}
+                {% assign start_letter = line | slice: 0, 1 %}
+                {% if '0' < start_letter and start_letter <= '3' %}
+                    {% assign heading_line = line | split: ">" %}
+                    {% assign heading_id = heading_line[0] | split: "id=" | last | remove:'"' | remove:'\' %}
+                    {% assign heading_content = heading_line[1] | split: "</" | first %}
 
+                    {% if current_level < start_letter %}
+                        {% for i in (current_level..start_letter) %}
+                            {% if forloop.last %}
+                                {% break %}
+                            {% endif %}
+                            <ul class="post-toc-list">
+                        {% endfor %}
+                        {% assign current_level = start_letter %}
+                    {% elsif current_level > start_letter %}
+                        
+                        {% for i in (start_letter..current_level) %}
+                            {% if forloop.last %}
+                                {% break %}
+                            {% endif %}
+                            </ul>
+                        {% endfor %}
+                        {% assign current_level = start_letter %}
+                    {% endif %}
+
+                    <li class="post-toc-node">
+                        <a class="post-toc-item post-toc-item-h{{ start_letter }}" href="#{{ heading_id }}">
+                            {{ heading_content }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            
+            {% if current_level > start_letter %}
+                {% for i in (start_letter..current_level) %}
+                    {% if forloop.last %}
+                        {% break %}
+                    {% endif %}
+                    </ul>
+                {% endfor %}
+            {% endif %}
+            
+        </ul>        
+    </div>
 </aside>
 </div>

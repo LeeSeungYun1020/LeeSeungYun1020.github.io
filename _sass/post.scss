@@ -1,5 +1,10 @@
+:root {
+    --toc-font-color: rgb(25, 25, 28);
+  }
+
 .post-layout {
     max-width: 1200px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -13,9 +18,11 @@
 
 .post-sidebar {
     width: 250px;
-    height: 100px;
+    height: 100%;
     background: gray;
     display: block;
+    position: sticky;
+    top: 0;
 }
 
 @media screen and (max-width: 1000px) {
@@ -26,5 +33,43 @@
     .post-sidebar {
         width: 0;
     }
-  }
+}
 
+ul {
+    list-style: none;
+}
+
+.post-toc {
+    position: absolute;
+    overflow: hidden;
+}
+
+.post-toc-list {
+    padding-left: 0;
+}
+
+.post-toc-node {
+    border-left: 1px solid grey;
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: var(--toc-font-color);
+}
+
+.post-toc-item {
+
+}
+
+.post-toc-item-h1 {
+    font-size: 1.2em;
+}
+
+.post-toc-item-h2 {
+    font-size: 1em;
+    padding-left: 0.5em;
+}
+
+.post-toc-item-h3 {
+    font-size: 0.8em;
+    padding-left: 1.5em;
+}
