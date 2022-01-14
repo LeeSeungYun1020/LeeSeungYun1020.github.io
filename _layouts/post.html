@@ -2,6 +2,25 @@
 layout: default
 ---
 
+{% assign headings_split = content | split: "<h" %}
+{% for line in headings_split %}
+    <p>{{ line }}</p>
+    {% case line[0] %}
+    {% when '1' %}
+        <p>h1 {{line}}</p>
+    {% when '2' %}
+
+    {% when '3' %}
+
+    {% when '4' %}
+
+    {% when '5' %}
+
+    {% when '6' %}
+
+    {% endcase %}
+{% endfor %}
+
 <div class="post-layout">
 <article class="post-article">
     <h1>{{ page.title }}</h1>
