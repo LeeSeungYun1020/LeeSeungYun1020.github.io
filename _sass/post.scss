@@ -1,5 +1,9 @@
 :root {
+    --toc-bar-color: grey;
     --toc-font-color: rgb(25, 25, 28);
+    --toc-selected-bar-color: orange;
+    --toc-selected-font-color: black;
+    --toc-selected-backgroud-color: #19191c0d;
   }
 
 .post-layout {
@@ -13,13 +17,14 @@
 
 .post-article {
     flex-grow: 1;
+    width: 100%;
     max-width: 900px;
 }
 
 .post-sidebar {
     width: 250px;
     height: 100%;
-    background: gray;
+    margin-left: 50px;
     display: block;
     position: sticky;
     top: 0;
@@ -41,6 +46,7 @@ ul {
 }
 
 .post-toc {
+    width: 100%;
     position: absolute;
     overflow: hidden;
 }
@@ -50,7 +56,8 @@ ul {
 }
 
 .post-toc-node {
-    border-left: 1px solid grey;
+    border-left: 1px solid var(--toc-bar-color);
+    margin-left: 1px;
     padding-left: 8px;
     padding-top: 4px;
     padding-bottom: 4px;
@@ -59,6 +66,12 @@ ul {
 
 .post-toc-item {
 
+}
+
+.post-toc-item-now{
+    border-left: 3px solid var(--toc-selected-bar-color);
+    margin-left: 0;
+    background: var(--toc-selected-backgroud-color);
 }
 
 .post-toc-item-h1 {
