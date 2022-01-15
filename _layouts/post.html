@@ -153,6 +153,7 @@ layout: default
         }());
     }
 
+    // 태그명 이용해 값과 높이 값 가져옴
     function getElememtsAndHeightByTagName(tag, level=0) {
         return Array.from(document.getElementsByTagName(tag), it => {
             dict = {}
@@ -163,6 +164,7 @@ layout: default
         })
     }
 
+    // 현재 위치에 해당하는 TOC element에 클래스 지정
     function setNowClass(posY, where) {
         for (item of where) {
             document.getElementById("toc-" + item["value"]["id"])?.parentElement.classList.remove("post-toc-item-now")
@@ -171,20 +173,17 @@ layout: default
         let checked = false
         for (let i = 1; i < where.length; i++) {
             let now = where[i]
-            console.log(now["height"], posY)
             if (now["height"] >= posY + 10) {
                 // add class to preview toc item
-                console.log(where[i - 1])
                 document.getElementById("toc-" + where[i - 1]["value"]["id"])?.parentElement.classList.add("post-toc-item-now")
                 checked = true
                 break
             }
         }
-
+        // check last toc item
         if (!checked)
             document.getElementById("toc-" + where[where.length - 1]["value"]["id"])?.parentElement.classList.add("post-toc-item-now")
     }
-
 
     const items = document.getElementsByClassName("post-toc-item")
     const heading1 = getElememtsAndHeightByTagName("h1", 1)
