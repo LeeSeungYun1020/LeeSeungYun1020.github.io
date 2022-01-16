@@ -10,6 +10,7 @@
   --background-font-color: white;
   --background-invalid-font-color: grey;
   --footer-height: 160px;
+  --header-height: 64px;
 }
 
 * {
@@ -55,7 +56,7 @@ a {
 // header
 .header {
   width: 100%;
-  height: 64px;
+  height: var(--header-height);
   display: flex;
   justify-content: space-between;
   background: var(--background-color);
@@ -75,7 +76,7 @@ a {
 
 .header-navigation-button {
   height: 100%;
-  display: inline-flex;
+  display: none;
   background: transparent;
   padding: 6px;
   border-width: 0;
@@ -106,7 +107,7 @@ a {
 }
 
 .header-current-tab-box {
-  border-bottom-color: var(--background-font-color);;
+  border-color: var(--background-font-color);
 }
 
 // header tab - default
@@ -160,16 +161,40 @@ a {
 @media screen and (max-width: 640px) {
   :root {
     --footer-height: 100px;
+    --header-height: 48px;
   }  
 
   .header {
-    height: 48px;
     padding-left: 16px;
     padding-right: 16px;
   }
 
   .header-navigation {
-    display: none;
+    visibility: hidden;
+    width: 100%;
+    height: calc(var(--header-height) * 4);
+    margin-top: var(--header-height);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--background-color);
+  }
+
+  .header-navigation-button {
+    display: inline-flex;
+  }
+
+  .header-tab-box {
+    margin-left: 0;
+    padding-left: 16px;
+    border-left: 4px solid transparent;
+    border-bottom: 0;
+    height: var(--header-height);
+  }
+
+  .header-current-tab-box {
+    border-color: var(--background-font-color);
   }
 
   .header-logo-box {
