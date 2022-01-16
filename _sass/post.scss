@@ -33,11 +33,10 @@
 @media screen and (max-width: 1000px) {
     .post-article {   
         width: 100%;
-        padding: 0;
     }
     .post-sidebar {
         width: 0;
-        visibility: hidden;
+        display: none;
     }
 }
 
