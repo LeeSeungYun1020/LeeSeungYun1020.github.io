@@ -76,9 +76,9 @@ a {
 
 .header-navigation-button {
   height: 100%;
+  z-index: 5;
   display: none;
   background: transparent;
-  padding: 6px;
   border-width: 0;
   align-items: center;
 }

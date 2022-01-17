@@ -24,15 +24,25 @@
     </div>
 </header>
 
-<!-- Mobile navigation button click -->
 <script>
     const nav = document.getElementById("header-navigation")
     const navButton = document.getElementById("header-navigation-button")
 
+    // Mobile navigation button click
     navButton.addEventListener('click', event => {
         if (nav.style.visibility == "hidden")
             nav.style.visibility = "visible"
         else
             nav.style.visibility = "hidden"
     });
+
+    console.log(document.getElementsByClassName("header-current-tab"))
+    // Desktop navigation bar default selection
+    if (document.getElementsByClassName("header-current-tab").length == 0) {
+        let tabs = document.getElementsByClassName("header-tab")
+        let lastTab = tabs[tabs.length - 1]
+        lastTab.classList.add("header-current-tab")
+        lastTab.parentElement.classList.add("header-current-tab-box")
+    }
 </script>
+
