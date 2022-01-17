@@ -185,14 +185,26 @@ layout: default
             document.getElementById("toc-" + where[where.length - 1]["value"]["id"])?.parentElement.classList.add("post-toc-item-now")
     }
 
+    function concatHeadings(heading1, heading2, heading3) {
+        return heading1.concat(heading2).concat(heading3).sort((a, b) => a["height"] - b["height"] )
+    }
+
     const items = document.getElementsByClassName("post-toc-item")
-    const heading1 = getElememtsAndHeightByTagName("h1", 1)
-    const heading2 = getElememtsAndHeightByTagName("h2", 2)
-    const heading3 = getElememtsAndHeightByTagName("h3", 3)
-    const heading = heading1.concat(heading2).concat(heading3).sort((a, b) => a["height"] - b["height"] )
+    let heading1 = getElememtsAndHeightByTagName("h1", 1)
+    let heading2 = getElememtsAndHeightByTagName("h2", 2)
+    let heading3 = getElememtsAndHeightByTagName("h3", 3)
+    let heading = concatHeadings(heading1, heading2, heading3)
     
     setNowClass(window.pageYOffset, heading)
     document.addEventListener('scroll', () => {
         setNowClass(window.pageYOffset, heading)
     })
+
+    window.addEventListener('resize', () => {
+        heading1 = getElememtsAndHeightByTagName("h1", 1)
+        heading2 = getElememtsAndHeightByTagName("h2", 2)
+        heading3 = getElememtsAndHeightByTagName("h3", 3)
+        heading = concatHeadings(heading1, heading2, heading3)
+    })
+
 </script>
