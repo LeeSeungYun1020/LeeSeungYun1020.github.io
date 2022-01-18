@@ -4,18 +4,11 @@ layout: default
 
 <div class="post-layout">
 <article class="post-article">
-    <h1>{{ page.title }}</h1>
-    <p>
-        {{ page.date | date_to_string }}
-        {{ page.author }}
-
-        {% assign category = site.categories | where: 'name', page.categories | first %}
-        {% if category %}
-        - <a href="{{ category.url }}">{{ category.name }}</a>
-        {% else %}
-        - {{ category.name }}
-        {% endif %}
-    </p>
+    <hgroup>
+        <h1>{{ page.title }}</h1>
+        <h2>{{ page.date | date:"%F" }}</h2>
+        <h3>{{ page.categories }}</h3>
+    </hgroup>
 
     {{ content }}
 </article>
@@ -175,7 +168,11 @@ layout: default
             let now = where[i]
             if (now["height"] >= posY + 10) {
                 // add class to preview toc item
-                document.getElementById("toc-" + where[i - 1]["value"]["id"])?.parentElement.classList.add("post-toc-item-now")
+                let tocItem = document.getElementById("toc-" + where[i - 1]["value"]["id"])
+                if (tocItem)
+                    tocItem.parentElement.classList.add("post-toc-item-now")
+                else
+                    continue
                 checked = true
                 break
             }
@@ -207,4 +204,8 @@ layout: default
         heading = concatHeadings(heading1, heading2, heading3)
     })
 
+</script>
+
+<script>
+    console.log("{{ page.date | date_to_string }}")
 </script>
