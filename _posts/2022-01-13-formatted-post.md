@@ -93,6 +93,12 @@ class PriorityQue{
 - real
 - power
 
+| 표 | 1번 | 2번 |
+|---|---|---|
+| 좌 | 60% | 40% |
+| 중 | 50% | 50% |
+| 우 | 40% | 60% |
+
 Anim Lorem elit exercitation consectetur ea deserunt eiusmod fugiat et Lorem ex commodo pariatur. Excepteur sint consectetur est irure Lorem excepteur consectetur est ea. Et ullamco culpa deserunt ea non adipisicing aliquip. Nulla pariatur cillum ea est ea officia id. Laborum labore est dolore aute sint do. Occaecat laborum adipisicing ea dolore.
 
 * banana
