@@ -13,13 +13,95 @@ categories: test
 
 ### 개요  
 
-Ea veniam duis amet laboris ut. In ad reprehenderit est duis adipisicing id magna mollit qui ut amet occaecat. Elit dolore cillum ex veniam officia sint.  
+Ea veniam duis amet laboris ut. In ad reprehenderit `est` duis adipisicing id magna mollit qui ut `amet` occaecat. Elit dolore cillum ex veniam officia sint.  
 
-Excepteur sit aliqua consectetur ex eiusmod excepteur qui aliquip non cupidatat et ut. Nostrud labore est do id enim. Laboris labore Lorem elit non tempor amet consectetur esse sit Lorem aliquip.  
+```python
+for i in range(5):
+    print(i)
+```
+
+Excepteur `sit` aliqua consectetur ex eiusmod excepteur qui aliquip non cupidatat et ut. Nostrud labore est do id enim. Laboris labore Lorem elit non tempor amet consectetur esse sit Lorem aliquip.  
+
+```kotlin
+import kotlin.math.absoluteValue
+// 한글 주석
+fun main() {
+    val n = readLine()!!.toInt()
+    val pq = PriorityQue()
+    for (i in 1..n) {
+        val input = readLine()!!.toInt()
+        if (input == 0)
+            println(pq.remove())
+        else
+            pq.add(input)
+    }
+}
+
+class PriorityQue{
+    private val list = mutableListOf<Int>()
+
+    fun add(input: Int) {
+        list.add(input)
+        var prev = list.lastIndex
+        var pos = (list.lastIndex - 1) / 2
+        while (pos >= 0) {
+            val posVal = list[pos]
+            val prevVal = list[prev]
+            val posAbs = posVal.absoluteValue
+            val prevAbs = prevVal.absoluteValue
+            if (posAbs > prevAbs || (posAbs == prevAbs && posVal > prevVal)) {
+                list[pos] = prevVal
+                list[prev] = posVal
+                prev = pos
+                pos = (pos - 1) / 2
+            } else break
+        }
+    }
+
+    fun remove(): Int {
+        when (list.size) {
+            0 -> return 0
+            1 -> return list.removeLast()
+        }
+        val ans = list[0]
+        list[0] = list.removeLast()
+        var pos = 1
+        var prev = 0
+        while (pos <= list.lastIndex) {
+            val posVal = list[pos]
+            val posAbs = posVal.absoluteValue
+            val pos1Abs = list.elementAtOrNull(pos + 1)?.absoluteValue ?: Int.MAX_VALUE
+            val minPos = if (posAbs < pos1Abs || (posAbs == pos1Abs && posVal < 0)) pos else pos + 1
+            val minVal = list[minPos]
+            val minAbs = minVal.absoluteValue
+            val prevVal = list[prev]
+            val prevAbs = prevVal.absoluteValue
+            if (minAbs < prevAbs || (minAbs == prevAbs && minVal < prevVal)) {
+                list[minPos] = prevVal
+                list[prev] = minVal
+                prev = minPos
+                pos = minPos * 2 + 1
+            } else break
+        }
+        return ans
+    }
+}
+```
+
+- something
+- wow
+- real
+- power
 
 Anim Lorem elit exercitation consectetur ea deserunt eiusmod fugiat et Lorem ex commodo pariatur. Excepteur sint consectetur est irure Lorem excepteur consectetur est ea. Et ullamco culpa deserunt ea non adipisicing aliquip. Nulla pariatur cillum ea est ea officia id. Laborum labore est dolore aute sint do. Occaecat laborum adipisicing ea dolore.
 
+* banana
+* apple
+* mango
+
 Do in in ullamco et quis sint laboris proident nostrud ullamco. Pariatur quis ea amet dolore reprehenderit laboris officia. Est et officia pariatur non. Pariatur voluptate ex officia ut irure ullamco. Exercitation qui ullamco occaecat pariatur laborum ea. Minim adipisicing magna excepteur fugiat magna et sit eu ut mollit cillum commodo.
+
+> Reprehenderit `commodo` laborum incididunt amet eiusmod voluptate dolor magna ea sint. Quis duis duis officia tempor do reprehenderit do ad aliquip elit qui. In et esse aliqua ad aliqua labore pariatur dolor.
 
 Do ea veniam occaecat ullamco tempor aliquip voluptate dolor. Aute proident ad quis minim commodo tempor amet duis laboris excepteur ipsum ut esse velit. Dolor minim incididunt occaecat nulla ut nostrud eu officia deserunt veniam. Veniam reprehenderit aliqua dolor tempor laboris ut elit esse duis sunt eiusmod aliquip magna. Tempor commodo aute occaecat enim voluptate enim eiusmod irure officia fugiat ullamco est sit.
 
@@ -31,7 +113,7 @@ Amet dolore esse amet sit exercitation laborum ipsum anim. Enim esse mollit moll
 
 Est ipsum occaecat nulla adipisicing magna voluptate velit aliqua pariatur duis exercitation incididunt voluptate et. Eu et culpa tempor eiusmod ea culpa ea culpa. Officia ea nostrud deserunt officia. Tempor nulla labore do commodo.
 
-> Irure quis mollit commodo Lorem incididunt veniam ea culpa qui minim cillum. Id reprehenderit nostrud eu occaecat ut ipsum ut eu irure. Dolor cillum pariatur anim mollit. Aute cupidatat est proident veniam dolore non aliquip adipisicing esse adipisicing sint ea.
+> Irure quis mollit `commodo` Lorem incididunt `veniam` ea culpa qui minim cillum. Id reprehenderit nostrud eu occaecat ut ipsum ut eu irure. Dolor cillum pariatur anim mollit. Aute cupidatat est proident veniam dolore non aliquip adipisicing esse adipisicing sint ea.
 
 ```text
 cd $HOME
