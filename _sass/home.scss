@@ -1,0 +1,11 @@
+
+
+.home-heading{
+    font-size: 64px;
+}
+
+@media screen and (max-width: 640px) {
+    .home-heading{
+        font-size: 42px;
+    }
+}
