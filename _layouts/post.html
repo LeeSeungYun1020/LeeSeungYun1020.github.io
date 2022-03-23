@@ -4,18 +4,25 @@ layout: default
 
 <div class="post-layout">
 <article class="post-article">
-    <hgroup>
+    <div class="post-header">
         <h1>{{ page.title }}</h1>
         <h2>{{ page.date | date:"%F" }}</h2>
-        <h3>{{ page.category }}</h3>
-        
-    </hgroup>
-
-        {% assign tags = site.category | where: 'name', page.category %}
-        {% for tag in tags %}
-        <div><a href="{{ tag.url }}">{{ tag.name }}</a></div>
-        {% endfor %}
-        <p>{{tags}}</p>
+        <div class="post-category-container">
+            {% assign tags = page.category | split: "," %}
+            {% for cat in site.category %}
+            {% if tags contains category %}
+            <p>{{site.category}}</p>
+            <div class="post-category-tag" style="background-color: #{{ cat.color }};">
+                <a href="{{ cat.url }}">{{ cat.name }}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            <div class="post-category-tag" style="background-color: red;">
+                <a href="/">Wow</a>
+            </div>
+        </div>
+    </div>
+    
 
     {{ content }}
 </article>
