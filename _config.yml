@@ -55,7 +55,7 @@ plugins:
 
 
 collections:
-  categories:
+  category:
     output: true
   projects:
     output: true
@@ -63,7 +63,7 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: "categories"
+      type: "category"
     values:
       layout: "category"
   - scope:
@@ -76,4 +76,4 @@ defaults:
     values:
       layout: "default"
 
-permalink: /:categories/:title
+permalink: /docs/:title

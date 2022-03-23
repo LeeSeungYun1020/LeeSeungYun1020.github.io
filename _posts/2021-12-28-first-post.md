@@ -2,6 +2,6 @@
 layout: post
 author: me
 tags: test update
-categories: test
+category: test
 ---
 This is first post
