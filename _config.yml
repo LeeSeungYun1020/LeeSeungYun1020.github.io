@@ -56,7 +56,9 @@ plugins:
 
 collections:
   category:
+    output: true
   projects:
+    output: true
 
 defaults:
   - scope:
