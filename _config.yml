@@ -56,11 +56,14 @@ plugins:
 
 collections:
   category:
-    output: true
   projects:
-    output: true
 
 defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "default" # 향후 프로젝트 페이지 제작시 수정
   - scope:
       path: ""
       type: "category"

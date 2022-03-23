@@ -9,21 +9,17 @@ layout: default
         <h2>{{ page.date | date:"%F" }}</h2>
         <div class="post-category-container">
             {% assign tags = page.category | split: "," %}
-            {% for cat in site.category %}
-            {% if tags contains category %}
-            <p>{{site.category}}</p>
-            <div class="post-category-tag" style="background-color: #{{ cat.color }};">
-                <a href="{{ cat.url }}">{{ cat.name }}</a>
+            {% for category in site.category %}
+            {% if tags contains category.name %}
+            
+            <div class="post-category-tag" style="background-color: #{{ category.color }};">
+                <a href="{{ category.url }}">{{ category.name }}</a>
             </div>
             {% endif %}
             {% endfor %}
-            <div class="post-category-tag" style="background-color: red;">
-                <a href="/">Wow</a>
-            </div>
         </div>
     </div>
     
-
     {{ content }}
 </article>
 <aside class="post-sidebar">
