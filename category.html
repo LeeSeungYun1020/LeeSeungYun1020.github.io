@@ -5,12 +5,10 @@ permalink: /category
 ---
 <h1>Category</h1>
 
-<ul>
+<div id="category-container">
     {% for category in site.categories %}
-    <li>
-        <h2><a href="{{ category.url }}">{{ category.name }}</a></h2>
-        <h3>{{ category.color }}</h3>
-        <p>{{ category.content | markdownify }}</p>
-    </li>
+    <div class="category-tag" style="background-color: #{{ category.color }};">
+        <a href="{{ category.url }}">{{ category.name }}</a>
+    </div>
     {% endfor %}
-</ul>
+</div>
