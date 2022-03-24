@@ -127,7 +127,7 @@ cd $HOME
 
 Quis occaecat ipsum proident commodo ad fugiat. Id nulla ipsum culpa fugiat duis aliquip excepteur incididunt. Proident officia consectetur et reprehenderit ad qui ad. Incididunt excepteur ad Lorem duis laboris commodo officia. Adipisicing proident veniam nisi dolor culpa nulla consequat elit nisi Lorem excepteur aliquip et. Dolor aute qui incididunt enim qui. Ea ullamco incididunt elit anim eiusmod velit voluptate sint consectetur. 
 
-### 3번도 될까요?
+### 3번은 조금 긴 제목을 가지고 있습니다. 제목이 어떻게 표시되는지 확인해보세요.
 
 Veniam labore aliquip qui consequat reprehenderit sunt exercitation. Enim sit occaecat consequat est pariatur cillum. Nisi eiusmod aliquip aliqua pariatur quis eiusmod magna culpa officia amet dolor amet mollit. Aliquip sit laborum voluptate dolore. Mollit sit amet proident sint irure deserunt laboris id anim qui esse. Fugiat quis officia esse laborum officia eiusmod enim duis aliquip aliqua reprehenderit consectetur voluptate qui.
 

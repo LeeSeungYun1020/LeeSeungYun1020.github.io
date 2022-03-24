@@ -91,6 +91,7 @@
 }
 
 .post-toc-node {
+    max-width: 250px;
     border-left: 1px solid var(--toc-bar-color);
     margin-left: 1px;
     padding-left: 8px;
@@ -100,7 +101,7 @@
 }
 
 .post-toc-item {
-
+    display: block;
 }
 
 .post-toc-item-now{
