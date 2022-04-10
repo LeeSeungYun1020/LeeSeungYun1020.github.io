@@ -8,7 +8,7 @@ layout: default
         <h1>{{ page.title }}</h1>
         <h2>{{ page.date | date:"%F" }}</h2>
         <div class="post-category-container">
-            {% assign tags = page.category | split: "," %}
+            {% assign tags = page.category %}
             {% for category in site.category %}
             {% if tags contains category.name %}
             
