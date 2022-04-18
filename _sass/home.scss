@@ -1,11 +1,56 @@
-
-
-.home-heading{
-    font-size: 64px;
+.main-content {
+    background-image: url("images/background.jpg");
 }
 
-@media screen and (max-width: 640px) {
-    .home-heading{
-        font-size: 42px;
+#home-hand-icon {
+    font-size: 100px;
+    display: block;
+    animation: rotation 750ms linear infinite alternate;
+    float: left;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(30deg);
+    }
+
+    to {
+        transform: rotate(40deg);
+    }
+}
+
+#home-introduce-box {
+    margin: auto;
+    margin-top: 200px;
+    text-align: center;
+    div {
+        float: right;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    #home-introduce-box {
+        height: 350px;
+        width: 640px;
+        padding: 50px;
+        margin-top: 100px;
+        background-color: black;
+        color: white;
+        animation: toBig 5000ms 1 normal linear;
+        font-size: xx-large;
+    }
+
+    @keyframes toBig {
+        from {
+            width: 400px;
+            height: 200px;
+            font-size: medium;
+        }
+
+        to {
+            width: 640px;
+            height: 350px;
+            font-size: xx-large;
+        }
     }
 }
