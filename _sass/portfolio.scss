@@ -20,6 +20,34 @@ body {
 }
 
 #portfolio {
+	html {
+		-webkit-print-color-adjust: exact;
+	}
+
+	* {
+		box-sizing: border-box;
+		-webkit-print-color-adjust: exact;
+	}
+
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	@media only screen {
+		body {
+			margin: 2em auto;
+			max-width: 900px;
+			color: rgb(55, 53, 47);
+		}
+	}
+
+	body {
+		line-height: 1.5;
+		white-space: pre-wrap;
+	}
+
 	a,
 	a.visited {
 		color: inherit;
@@ -196,12 +224,12 @@ body {
 		margin-block-end: 0.6em;
 	}
 
-	li > ol:first-child,
-	li > ul:first-child {
+	li>ol:first-child,
+	li>ul:first-child {
 		margin-block-start: 0.6em;
 	}
 
-	ul > li {
+	ul>li {
 		list-style: disc;
 	}
 
@@ -209,7 +237,7 @@ body {
 		text-indent: -1.7em;
 	}
 
-	ul.to-do-list > li {
+	ul.to-do-list>li {
 		list-style: none;
 	}
 
@@ -218,7 +246,7 @@ body {
 		opacity: 0.375;
 	}
 
-	ul.toggle > li {
+	ul.toggle>li {
 		list-style: none;
 	}
 
@@ -226,7 +254,7 @@ body {
 		padding-inline-start: 1.7em;
 	}
 
-	ul > li {
+	ul>li {
 		padding-left: 0.1em;
 	}
 
@@ -234,7 +262,7 @@ body {
 		padding-inline-start: 1.6em;
 	}
 
-	ol > li {
+	ol>li {
 		padding-left: 0.2em;
 	}
 
@@ -242,7 +270,7 @@ body {
 		padding-inline-start: 2em;
 	}
 
-	.mono ol > li {
+	.mono ol>li {
 		text-indent: -0.4em;
 	}
 
@@ -252,11 +280,11 @@ body {
 	}
 
 	/* Indent toggle children */
-	.toggle > li > details {
+	.toggle>li>details {
 		padding-left: 1.7em;
 	}
 
-	.toggle > li > details > summary {
+	.toggle>li>details>summary {
 		margin-left: -1.1em;
 	}
 
@@ -279,11 +307,25 @@ body {
 	.simple-table {
 		margin-top: 1em;
 		font-size: 0.875rem;
+		empty-cells: show;
+	}
+
+	.simple-table td {
+		height: 29px;
+		min-width: 120px;
+	}
+
+	.simple-table th {
+		height: 29px;
+		min-width: 120px;
+	}
+
+	.simple-table-header-color {
+		background: rgb(247, 246, 243);
+		color: black;
 	}
 
 	.simple-table-header {
-		background: rgb(247, 246, 243);
-		color: black;
 		font-weight: 500;
 	}
 
@@ -302,10 +344,6 @@ body {
 
 	img.icon {
 		border-radius: 3px;
-		max-width: 3em;
-		max-height: 3em;
-		margin-top: -2em;
-		margin-left: 0.5em;
 	}
 
 	.user-icon {
@@ -352,12 +390,12 @@ body {
 		font-weight: 500;
 	}
 
-	p > .user {
+	p>.user {
 		opacity: 0.5;
 	}
 
-	td > .user,
-	td > time {
+	td>.user,
+	td>time {
 		white-space: nowrap;
 	}
 
@@ -403,7 +441,7 @@ body {
 		word-break: break-all;
 	}
 
-	.code > code {
+	.code>code {
 		background: none;
 		padding: 0;
 		font-size: 100%;
@@ -469,169 +507,296 @@ body {
 		margin-top: 0.25em;
 	}
 
-	.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-	.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-	.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-	.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-	.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-	.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-	.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-	.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-	.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-	.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-	.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-	.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-	.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-	.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-	.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-	.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-	.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-	.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-	.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-	.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+	.sans {
+		font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+	}
+
+	.code {
+		font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+	}
+
+	.serif {
+		font-family: Lyon-Text, Georgia, ui-serif, serif;
+	}
+
+	.mono {
+		font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+	}
+
+	.pdf .sans {
+		font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP';
+	}
+
+	.pdf:lang(zh-CN) .sans {
+		font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC';
+	}
+
+	.pdf:lang(zh-TW) .sans {
+		font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC';
+	}
+
+	.pdf:lang(ko-KR) .sans {
+		font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR';
+	}
+
+	.pdf .code {
+		font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+	}
+
+	.pdf:lang(zh-CN) .code {
+		font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+	}
+
+	.pdf:lang(zh-TW) .code {
+		font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+	}
+
+	.pdf:lang(ko-KR) .code {
+		font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+	}
+
+	.pdf .serif {
+		font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP';
+	}
+
+	.pdf:lang(zh-CN) .serif {
+		font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC';
+	}
+
+	.pdf:lang(zh-TW) .serif {
+		font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC';
+	}
+
+	.pdf:lang(ko-KR) .serif {
+		font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR';
+	}
+
+	.pdf .mono {
+		font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+	}
+
+	.pdf:lang(zh-CN) .mono {
+		font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+	}
+
+	.pdf:lang(zh-TW) .mono {
+		font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+	}
+
+	.pdf:lang(ko-KR) .mono {
+		font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+	}
+
 	.highlight-default {
 		color: rgba(55, 53, 47, 1);
 	}
+
 	.highlight-gray {
 		color: rgba(120, 119, 116, 1);
 		fill: rgba(120, 119, 116, 1);
 	}
+
 	.highlight-brown {
 		color: rgba(159, 107, 83, 1);
 		fill: rgba(159, 107, 83, 1);
 	}
+
 	.highlight-orange {
 		color: rgba(217, 115, 13, 1);
 		fill: rgba(217, 115, 13, 1);
 	}
+
 	.highlight-yellow {
 		color: rgba(203, 145, 47, 1);
 		fill: rgba(203, 145, 47, 1);
 	}
+
 	.highlight-teal {
 		color: rgba(68, 131, 97, 1);
 		fill: rgba(68, 131, 97, 1);
 	}
+
 	.highlight-blue {
 		color: rgba(51, 126, 169, 1);
 		fill: rgba(51, 126, 169, 1);
 	}
+
 	.highlight-purple {
 		color: rgba(144, 101, 176, 1);
 		fill: rgba(144, 101, 176, 1);
 	}
+
 	.highlight-pink {
 		color: rgba(193, 76, 138, 1);
 		fill: rgba(193, 76, 138, 1);
 	}
+
 	.highlight-red {
 		color: rgba(212, 76, 71, 1);
 		fill: rgba(212, 76, 71, 1);
 	}
+
 	.highlight-gray_background {
 		background: rgba(241, 241, 239, 1);
 	}
+
 	.highlight-brown_background {
 		background: rgba(244, 238, 238, 1);
 	}
+
 	.highlight-orange_background {
 		background: rgba(251, 236, 221, 1);
 	}
+
 	.highlight-yellow_background {
 		background: rgba(251, 243, 219, 1);
 	}
+
 	.highlight-teal_background {
 		background: rgba(237, 243, 236, 1);
 	}
+
 	.highlight-blue_background {
 		background: rgba(231, 243, 248, 1);
 	}
+
 	.highlight-purple_background {
 		background: rgba(244, 240, 247, 0.8);
 	}
+
 	.highlight-pink_background {
 		background: rgba(249, 238, 243, 0.8);
 	}
+
 	.highlight-red_background {
 		background: rgba(253, 235, 236, 1);
 	}
+
 	.block-color-default {
 		color: inherit;
 		fill: inherit;
 	}
+
 	.block-color-gray {
 		color: rgba(120, 119, 116, 1);
 		fill: rgba(120, 119, 116, 1);
 	}
+
 	.block-color-brown {
 		color: rgba(159, 107, 83, 1);
 		fill: rgba(159, 107, 83, 1);
 	}
+
 	.block-color-orange {
 		color: rgba(217, 115, 13, 1);
 		fill: rgba(217, 115, 13, 1);
 	}
+
 	.block-color-yellow {
 		color: rgba(203, 145, 47, 1);
 		fill: rgba(203, 145, 47, 1);
 	}
+
 	.block-color-teal {
 		color: rgba(68, 131, 97, 1);
 		fill: rgba(68, 131, 97, 1);
 	}
+
 	.block-color-blue {
 		color: rgba(51, 126, 169, 1);
 		fill: rgba(51, 126, 169, 1);
 	}
+
 	.block-color-purple {
 		color: rgba(144, 101, 176, 1);
 		fill: rgba(144, 101, 176, 1);
 	}
+
 	.block-color-pink {
 		color: rgba(193, 76, 138, 1);
 		fill: rgba(193, 76, 138, 1);
 	}
+
 	.block-color-red {
 		color: rgba(212, 76, 71, 1);
 		fill: rgba(212, 76, 71, 1);
 	}
+
 	.block-color-gray_background {
 		background: rgba(241, 241, 239, 1);
 	}
+
 	.block-color-brown_background {
 		background: rgba(244, 238, 238, 1);
 	}
+
 	.block-color-orange_background {
 		background: rgba(251, 236, 221, 1);
 	}
+
 	.block-color-yellow_background {
 		background: rgba(251, 243, 219, 1);
 	}
+
 	.block-color-teal_background {
 		background: rgba(237, 243, 236, 1);
 	}
+
 	.block-color-blue_background {
 		background: rgba(231, 243, 248, 1);
 	}
+
 	.block-color-purple_background {
 		background: rgba(244, 240, 247, 0.8);
 	}
+
 	.block-color-pink_background {
 		background: rgba(249, 238, 243, 0.8);
 	}
+
 	.block-color-red_background {
 		background: rgba(253, 235, 236, 1);
 	}
-	.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
-	.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
-	.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
-	.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-	.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
-	.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
-	.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
-	.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
-	.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
-	.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+	.select-value-color-pink {
+		background-color: rgba(245, 224, 233, 1);
+	}
+
+	.select-value-color-purple {
+		background-color: rgba(232, 222, 238, 1);
+	}
+
+	.select-value-color-green {
+		background-color: rgba(219, 237, 219, 1);
+	}
+
+	.select-value-color-gray {
+		background-color: rgba(227, 226, 224, 1);
+	}
+
+	.select-value-color-opaquegray {
+		background-color: rgba(255, 255, 255, 0.0375);
+	}
+
+	.select-value-color-orange {
+		background-color: rgba(250, 222, 201, 1);
+	}
+
+	.select-value-color-brown {
+		background-color: rgba(238, 224, 218, 1);
+	}
+
+	.select-value-color-red {
+		background-color: rgba(255, 226, 221, 1);
+	}
+
+	.select-value-color-yellow {
+		background-color: rgba(253, 236, 200, 1);
+	}
+
+	.select-value-color-blue {
+		background-color: rgba(211, 229, 239, 1);
+	}
 
 	.checkbox {
 		display: inline-flex;
