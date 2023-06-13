@@ -37,7 +37,7 @@ collections:
   category:
     output: true
   projects:
-    output: true
+    output: false
 
 defaults:
   - scope:
