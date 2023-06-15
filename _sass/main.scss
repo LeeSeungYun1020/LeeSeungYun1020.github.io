@@ -156,10 +156,12 @@ main {
   height: var(--footer-height);
   background: var(--background-color);
   color: var(--background-font-color);
+  display: flex;
+  flex-direction: row;
   box-sizing: border-box;
+  justify-content: space-between;
   @include relative-font-size(1);
 }
-
 
 .footer-icon-box {
   font-size: 1em;
@@ -173,6 +175,11 @@ main {
 .footer-icon-link {
   color: var(--background-font-color);
   margin-right: 16px;
+}
+
+#footer-main-icon {
+  width: 60px;
+  height: 60px;
 }
 
 // Responsive Web Design
@@ -225,5 +232,6 @@ main {
 
   .footer p {
     margin-block-start: 0;
+    font-size: 0.9em;
   }
 }
