@@ -178,6 +178,7 @@ main {
 }
 
 #footer-main-icon {
+  margin-block-start: 1em;
   width: 60px;
   height: 60px;
 }
@@ -233,5 +234,11 @@ main {
   .footer p {
     margin-block-start: 0;
     font-size: 0.9em;
+  }
+ㅜ
+  #footer-main-icon {
+    margin-block-start: 0;
+    width: 40px;
+    height: 40px;
   }
 }
