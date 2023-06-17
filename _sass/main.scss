@@ -169,7 +169,22 @@ main {
 }
 
 .footer-icon {
+  width: 16px;
+  height: 16px;
   color: var(--background-font-color);
+  display:inline-block;
+  vertical-align:text-bottom;
+  overflow:visible
+}
+
+#footer-res-icon {
+  width: 16px;
+  height: 16px;
+}
+
+#footer-github-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .footer-icon-link {
@@ -235,7 +250,7 @@ main {
     margin-block-start: 0;
     font-size: 0.9em;
   }
-ㅜ
+
   #footer-main-icon {
     margin-block-start: 0;
     width: 40px;
