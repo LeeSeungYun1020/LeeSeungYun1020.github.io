@@ -1,10 +1,11 @@
 :root {
+    --toc-width: 250px;
     --toc-bar-color: grey;
     --toc-font-color: rgb(25, 25, 28);
     --toc-selected-bar-color: orange;
     --toc-selected-font-color: black;
     --toc-selected-backgroud-color: #19191c0d;
-  }
+}
 
 .post-layout {
     max-width: 1200px;
@@ -22,8 +23,7 @@
 }
 
 .post-sidebar {
-    width: 250px;
-    min-width: 100%;
+    width: var(--toc-width);
     height: 100%;
     margin-left: 50px;
     display: block;
@@ -80,7 +80,7 @@
 // Table of contents
 
 .post-toc {
-    width: 100%;
+    width: var(--toc-width);
     position: absolute;
     overflow: hidden;
 }
@@ -91,7 +91,6 @@
 }
 
 .post-toc-node {
-    max-width: 250px;
     border-left: 1px solid var(--toc-bar-color);
     margin-left: 1px;
     padding-left: 8px;
