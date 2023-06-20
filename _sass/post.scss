@@ -1,14 +1,19 @@
 :root {
+  --post-layout-max-width: 1200px;
+  --post-article-max-width: 900px;
+
   --toc-width: 250px;
   --toc-bar-color: grey;
   --toc-font-color: rgb(25, 25, 28);
   --toc-selected-bar-color: orange;
   --toc-selected-font-color: black;
   --toc-selected-backgroud-color: #19191c0d;
+  --toc-top-margin: 64px;
+  --toc-left-margin: 50px;
 }
 
 .post-layout {
-  max-width: 1200px;
+  max-width: var(--post-layout-max-width);
   height: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -19,16 +24,16 @@
 .post-article {
   flex-grow: 1;
   width: 100%;
-  max-width: 900px;
+  max-width: var(--post-article-max-width);
 }
 
 .post-sidebar {
   width: var(--toc-width);
   height: 100%;
-  margin-left: 50px;
+  margin-left: var(--toc-left-margin);
   display: block;
   position: sticky;
-  top: 0;
+  top: var(--toc-top-margin);
 }
 
 @media screen and (max-width: 1000px) {
