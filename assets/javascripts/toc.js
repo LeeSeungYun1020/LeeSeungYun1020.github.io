@@ -134,14 +134,15 @@ function concatHeadings(heading1, heading2, heading3) {
 
 // main
 window.onload = () => {
+  const contents = document.getElementById("post-contents")
   let heading1 = getElementsAndHeightByTagName("h1", 1)
   let heading2 = getElementsAndHeightByTagName("h2", 2)
   let heading3 = getElementsAndHeightByTagName("h3", 3)
   let heading = concatHeadings(heading1, heading2, heading3)
 
-  setNowClass(window.pageYOffset, heading)
-  document.addEventListener('scroll', () => {
-    setNowClass(window.pageYOffset, heading)
+  setNowClass(contents.scrollTop, heading)
+  contents.addEventListener('scroll', () => {
+    setNowClass(contents.scrollTop, heading)
   })
 
   window.addEventListener('resize', () => {

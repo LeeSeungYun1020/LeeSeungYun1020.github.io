@@ -9,38 +9,91 @@
   --toc-selected-font-color: black;
   --toc-selected-backgroud-color: #19191c0d;
   --toc-top-margin: 64px;
-  --toc-left-margin: 50px;
 }
 
 .post-layout {
-  max-width: var(--post-layout-max-width);
   height: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  min-height: 100%;
   display: flex;
-  flex: 0 0 0;
+  flex-direction: column;
+}
+
+.post-main {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+}
+
+.post-nav {
+  background: #555555;
+  width: 300px;
+  height: auto;
+  overflow-y: auto;
+  flex-grow: 0
+}
+
+.post-contents {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex-grow: 1
 }
 
 .post-article {
-  flex-grow: 1;
   width: 100%;
   max-width: var(--post-article-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  padding-left: 32px;
+  padding-right: 32px;
+  flex-grow: 1;
 }
 
 .post-sidebar {
   width: var(--toc-width);
+  margin-right: 48px;
   height: 100%;
-  margin-left: var(--toc-left-margin);
+  overflow: hidden;
+  box-sizing: border-box;
   display: block;
-  position: sticky;
-  top: var(--toc-top-margin);
+  flex-grow: 0;
 }
 
-@media screen and (max-width: 1000px) {
+.post-article-sidebar-box {
+  display: flex;
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 900px) {
   .post-article {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: 16px;
+    padding-right: 16px;
   }
   .post-sidebar {
+    width: 0;
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .post-article {
+    max-width: 650px;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .post-sidebar {
+    margin-right: 24px;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .post-nav {
     width: 0;
     display: none;
   }
@@ -53,7 +106,7 @@
   border-left: 8px solid orange;
   margin-block-start: 0.83em;
   margin-block-end: 0.83em;
-  padding-bottom: 0.01em;
+  padding-bottom: 0.5em;
 }
 
 .post-header h1 {
@@ -85,6 +138,7 @@
 .post-toc {
   width: var(--toc-width);
   position: absolute;
+  max-height: 500px;
   overflow: hidden;
 }
 
