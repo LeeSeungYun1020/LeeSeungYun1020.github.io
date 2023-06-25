@@ -4,7 +4,6 @@ title:  "Formatted post"
 date:   2022-01-13 09:00:00 +0900
 author: me
 tags: ["test"]
-category: ["test", "Android"]
 ---
 
 # 제목1
