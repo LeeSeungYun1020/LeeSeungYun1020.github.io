@@ -4,3 +4,7 @@
   link: /about
 - name: 포트폴리오
   link: /portfolio
+- name: 블로그
+  link: /blog
+- name: 검색
+  link: /search
