@@ -1,6 +1,6 @@
 :root {
   --post-layout-max-width: 1200px;
-  --post-article-max-width: 900px;
+  --post-article-max-width: 700px;
 
   --toc-width: 250px;
   --toc-bar-color: grey;
@@ -24,14 +24,6 @@
   min-height: 0;
 }
 
-.post-nav {
-  background: #555555;
-  width: 300px;
-  height: auto;
-  overflow-y: auto;
-  flex-grow: 0
-}
-
 .post-contents {
   width: 100%;
   height: auto;
@@ -47,8 +39,6 @@
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box;
-  padding-left: 32px;
-  padding-right: 32px;
   flex-grow: 1;
 }
 
@@ -67,33 +57,15 @@
   flex-grow: 1;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) {
   .post-article {
     width: 100%;
-    max-width: 100%;
+    max-width: calc(var(--post-article-max-width) + 32px);
     box-sizing: border-box;
     padding-left: 16px;
     padding-right: 16px;
   }
   .post-sidebar {
-    width: 0;
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .post-article {
-    max-width: 650px;
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-  .post-sidebar {
-    margin-right: 24px;
-  }
-}
-
-@media screen and (max-width: 1500px) {
-  .post-nav {
     width: 0;
     display: none;
   }
