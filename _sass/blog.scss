@@ -2,14 +2,20 @@
   align-items: center;
 
   #blog-title-background {
-    padding: 16px;
+    background-image: url("/assets/images/blog/title_banner.jpeg");
+    background-position: center;
+    background-size: cover;
     margin: 24px auto 40px;
-    background: #2e2e30;
+    padding: 16px;
 
     #blog-title-text {
-      padding: 0;
-      text-align: center;
+      color: white;
       font-size: 2em;
+      font-weight: lighter;
+      letter-spacing: 0.1em;
+      padding-bottom: 0.5em;
+      padding-top: 0.5em;
+      text-align: center;
     }
   }
 }
