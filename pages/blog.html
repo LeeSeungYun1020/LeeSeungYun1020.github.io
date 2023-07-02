@@ -1,0 +1,31 @@
+---
+layout: default
+title: 블로그
+permalink: /blog
+---
+
+<div class="center-layout">
+  <section id="blog-title-section">
+    <div id="blog-title-background">
+      <h1 id="blog-title-text">블로그</h1>
+    </div>
+  </section>
+
+  <section id="blog-contents-section">
+    {% for post in site.posts %}
+    <a class="blog-contents" href="{{ post.url }}">
+      <div>
+        <h2 class="blog-contents-title">{{ post.title }}</h2>
+        <p class="blog-contents-desc">
+          {% if post.desc != null and post.desc != "" %}
+          {{ post.desc }}
+          {% else %}
+          {{ post.excerpt | strip_html | strip_newlines | truncatewords: 45 }}
+          {% endif %}
+        </p>
+        <p class="blog-contents-date">{{ post.date | date:"%F" }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </section>
+</div>

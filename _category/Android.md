@@ -1,4 +1,0 @@
----
-name: Android
-color: DBEDDB
----

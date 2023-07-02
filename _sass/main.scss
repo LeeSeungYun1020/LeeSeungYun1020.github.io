@@ -12,6 +12,7 @@
   --background-invalid-font-color: grey;
   --footer-height: 160px;
   --header-height: 64px;
+  --contents-horizontal-padding: 16px;
 }
 
 * {
@@ -41,30 +42,39 @@ a {
   color: var(--background-color);
 }
 
-.main-content {
-  height: auto;
+.main-layout {
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
+}
+
+.main-content {
   position: relative;
-  padding-bottom: var(--footer-height);
   box-sizing: border-box;
+  flex: 1 0 auto;
+  height: 100%;
 }
 
 .main-content > div {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: var(--contents-horizontal-padding);
+  padding-right: var(--contents-horizontal-padding);
 }
 
 .center-layout {
-  max-width: 1200px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+}
+
+main {
+  flex-grow: 1;
 }
 
 // header
 .header {
   width: 100%;
   height: var(--header-height);
-  position: relative;
+  z-index: 900;
   display: flex;
   justify-content: space-between;
   background: var(--background-color);
@@ -144,12 +154,12 @@ a {
   height: var(--footer-height);
   background: var(--background-color);
   color: var(--background-font-color);
+  display: flex;
+  flex-direction: row;
   box-sizing: border-box;
-  position: absolute;
-  transform : translateY(-100%);
+  justify-content: space-between;
   @include relative-font-size(1);
 }
-
 
 .footer-icon-box {
   font-size: 1em;
@@ -157,7 +167,22 @@ a {
 }
 
 .footer-icon {
+  width: 16px;
+  height: 16px;
   color: var(--background-font-color);
+  display:inline-block;
+  vertical-align:text-bottom;
+  overflow:visible
+}
+
+#footer-res-icon {
+  width: 16px;
+  height: 16px;
+}
+
+#footer-github-icon {
+  width: 24px;
+  height: 24px;
 }
 
 .footer-icon-link {
@@ -165,12 +190,18 @@ a {
   margin-right: 16px;
 }
 
+#footer-main-icon {
+  margin-block-start: 1em;
+  width: 60px;
+  height: 60px;
+}
+
 // Responsive Web Design
 @media screen and (max-width: 640px) {
   :root {
     --footer-height: 140px;
     --header-height: 48px;
-  }  
+  }
 
   .header {
     padding-left: 16px;
@@ -180,7 +211,7 @@ a {
   .header-navigation {
     visibility: hidden;
     width: 100%;
-    height: calc(var(--header-height) * 4);
+    height: auto;
     margin-top: var(--header-height);
     display: block;
     position: absolute;
@@ -215,5 +246,12 @@ a {
 
   .footer p {
     margin-block-start: 0;
+    font-size: 0.9em;
+  }
+
+  #footer-main-icon {
+    margin-block-start: 0;
+    width: 40px;
+    height: 40px;
   }
 }

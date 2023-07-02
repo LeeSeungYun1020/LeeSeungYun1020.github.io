@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="ko">
+---
+layout: head
+---
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-</head>
-<body>
-  <div class="main-content">
-      {% include header.html %}
-      {{ content }}
-  </div>
-  {% include footer.html %}
-</body>
-</html>
+<div class="main-layout">
+    {% include header.html %}
+    <div class="main-content">
+        {{ content }}
+    </div>
+    {% include footer.html %}
+</div>

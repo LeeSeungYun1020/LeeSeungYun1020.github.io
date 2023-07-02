@@ -1,0 +1,28 @@
+#container_404 {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#icon_section {
+  flex: 1 250px;
+  text-align: center;
+}
+
+#text_section {
+  flex: 2 500px;
+  padding-left: 40px;
+
+  h1 {
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+}
+
+#icon_404 {
+  width: 250px;
+  height: 250px;
+}
