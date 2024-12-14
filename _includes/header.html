@@ -9,12 +9,13 @@
     <div>
         <ul class="header-navigation" id="header-navigation">
             {% for item in site.data.navigation %}
-            <li class="header-tab-box {% if page.url == item.link %} header-current-tab-box{% endif %}">
-                <a class="header-link header-tab{% if page.url == item.link %} header-current-tab{% endif %}"
-                   href="{{ item.link }}">
-                    {{ item.name }}
-                </a>
-            </li>
+                <li class="header-tab-box {% if page.url == item.link %} header-current-tab-box{% endif %}">
+                    <a class="header-link header-tab{% if page.url == item.link %} header-current-tab{% endif %}"
+                       href="{{ item.link }}"
+                            {% if item.target != null %} target="{{ item.target }}" {% endif %} >
+                        {{ item.name }}
+                    </a>
+                </li>
             {% endfor %}
         </ul>
         <button aria-label="site navigation button" class="header-navigation-button" id="header-navigation-button"
