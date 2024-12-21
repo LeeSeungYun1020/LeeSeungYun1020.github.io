@@ -161,6 +161,10 @@ main {
   @include relative-font-size(1);
 }
 
+.footer-hello {
+  min-height: 42px;
+}
+
 .footer-icon-box {
   font-size: 1em;
   color: white;
