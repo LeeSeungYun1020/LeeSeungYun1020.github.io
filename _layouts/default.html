@@ -3,9 +3,9 @@ layout: head
 ---
 
 <div class="main-layout">
-    {% include header.html %}
+    {% include header.html link="/" title="이승윤" menu=site.data.navigation %}
     <div class="main-content">
         {{ content }}
     </div>
-    {% include footer.html %}
+    {% include footer.html hello="일상의 고민을 해결하는 개발자, 이승윤" %}
 </div>

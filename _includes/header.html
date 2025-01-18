@@ -1,52 +1,10 @@
 <header class="header">
     <div>
-        <a class="header-logo" href="{{ '/' | relative_url }}">
+        <a class="header-logo" href="{{ include.link | relative_url }}">
             <div class="header-logo-box">
-                이승윤
+                {{ include.title }}
             </div>
         </a>
     </div>
-    <div>
-        <ul class="header-navigation" id="header-navigation">
-            {% for item in site.data.navigation %}
-                <li class="header-tab-box {% if page.url == item.link %} header-current-tab-box{% endif %}">
-                    <a class="header-link header-tab{% if page.url == item.link %} header-current-tab{% endif %}"
-                       href="{{ item.link }}"
-                            {% if item.target != null %} target="{{ item.target }}" {% endif %} >
-                        {{ item.name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-        <button aria-label="site navigation button" class="header-navigation-button" id="header-navigation-button"
-                type="button">
-            <svg class="header-navigation-button-icon" fill="#FFFFFF" height="24px"
-                 viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-            </svg>
-        </button>
-    </div>
+    {% include navigation.html menu=include.menu %}
 </header>
-
-<script>
-    const nav = document.getElementById("header-navigation")
-    const navButton = document.getElementById("header-navigation-button")
-
-    // Mobile navigation button click
-    navButton.addEventListener('click', event => {
-        if (nav.style.visibility == "hidden")
-            nav.style.visibility = "visible"
-        else
-            nav.style.visibility = "hidden"
-    });
-
-    // Desktop navigation bar default selection
-    if (document.getElementsByClassName("header-current-tab").length == 0) {
-        let tabs = document.getElementsByClassName("header-tab")
-        let lastTab = tabs[tabs.length - 1]
-        lastTab.classList.add("header-current-tab")
-        lastTab.parentElement.classList.add("header-current-tab-box")
-    }
-</script>
-
