@@ -57,7 +57,7 @@
   flex-grow: 1;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
   .post-article {
     width: 100%;
     max-width: calc(var(--post-article-max-width) + 32px);

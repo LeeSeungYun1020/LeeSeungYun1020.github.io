@@ -19,6 +19,12 @@
         </div>
     </section>
     <section id="footer-end">
-        <object aria-label="icon" data="/assets/images/icon.svg" id="footer-main-icon" type="image/svg+xml"></object>
+        {% case include.iconType %}
+            {% when "blog" %}
+                <img src="/assets/images/blog/icon.png" alt="icon" id="footer-main-icon"/>
+            {% else %}
+                <object aria-label="icon" data="/assets/images/icon.svg" id="footer-main-icon"
+                        type="image/svg+xml"></object>
+        {% endcase %}
     </section>
 </footer>

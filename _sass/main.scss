@@ -115,13 +115,14 @@ main {
 }
 
 .header-tab-box {
-  height: 100%;
-  cursor: pointer;
-  list-style: none;
-  box-sizing: border-box;
-  border-bottom: 2px solid transparent;
   align-items: center;
+  border-bottom: 2px solid transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 100%;
+  list-style: none;
   margin-left: 32px;
+  min-width: 24px;
 }
 
 .header-current-tab-box {

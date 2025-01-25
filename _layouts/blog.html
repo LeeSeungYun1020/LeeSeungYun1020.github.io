@@ -1,0 +1,13 @@
+---
+layout: head
+---
+
+<link href="/assets/css/blog.css" rel="stylesheet">
+
+<div class="main-layout">
+    {% include header.html link="/blog" title="이롭: 이로운 기술 블로그" menu=site.data.blog.navigation %}
+    <div class="main-content">
+        {{ content }}
+    </div>
+    {% include footer.html hello="이로운 기술 블로그" iconType="blog" %}
+</div>
