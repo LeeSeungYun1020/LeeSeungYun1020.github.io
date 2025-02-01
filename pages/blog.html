@@ -14,7 +14,7 @@ permalink: /blog
   <section id="blog-contents-section">
     {% for post in site.posts %}
     <a class="blog-contents" href="{{ post.url }}">
-      <div>
+      <div class="blog-content-text">
         <h2 class="blog-contents-title">{{ post.title }}</h2>
         <p class="blog-contents-desc">
           {% if post.desc != null and post.desc != "" %}
@@ -25,6 +25,9 @@ permalink: /blog
         </p>
         <p class="blog-contents-date">{{ post.date | date:"%F" }}</p>
       </div>
+      {% if post.image != null %}
+      <img class="blog-contents-image" src="{{ post.image }}" alt="{{ post.title }}">
+      {% endif %}
     </a>
     {% endfor %}
   </section>
