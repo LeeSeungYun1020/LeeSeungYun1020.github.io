@@ -20,8 +20,8 @@ permalink: /blog
           {% if post.desc != null and post.desc != "" %}
           {{ post.desc }}
           {% else %}
-          {{ post.excerpt | strip_html | strip_newlines | truncatewords: 45 }}
-          {% endif %}
+          {{ post.excerpt | split: '<p>' | slice: 1, 1 | first | split: '</p>' | first | strip_html }}
+        {% endif %}
         </p>
         <p class="blog-contents-date">{{ post.date | date:"%F" }}</p>
       </div>
