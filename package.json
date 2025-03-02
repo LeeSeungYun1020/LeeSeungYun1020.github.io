@@ -1,0 +1,18 @@
+{
+  "name": "pages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && jekyll build",
+    "serve": "tsc && bundle exec jekyll serve & tsc --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LeeSeungYun1020/LeeSeungYun1020.github.io.git"
+  },
+  "private": true,
+  "dependencies": {
+    "typescript": "^5.7.3"
+  }
+}

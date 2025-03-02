@@ -2,9 +2,11 @@ _site
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
+package-lock.json
 vendor
 /.idea/workspace.xml
 /.idea/dictionaries/leeseungyun.xml
 /.idea/.name
 /_posts/tem
 /_posts/test
+/node_modules
