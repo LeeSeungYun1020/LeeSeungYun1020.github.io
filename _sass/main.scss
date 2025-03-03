@@ -131,12 +131,13 @@ main {
 
 // header tab - default
 .header-tab {
-  min-height: 100%;
-  display: flex;
-  color: var(--background-invalid-font-color);;
   align-items: center;
+  color: var(--background-invalid-font-color);
+  display: flex;
   font-size: medium;
   font-weight: 400;
+  min-height: 100%;
+  padding: 0 4px 0 4px;
 }
 
 .header-tab:hover {

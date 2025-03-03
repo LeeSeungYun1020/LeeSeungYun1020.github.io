@@ -3,7 +3,7 @@
         {% for item in include.menu %}
             <li class="header-tab-box {% if page.url == item.link %} header-current-tab-box{% endif %}">
                 <a class="header-link header-tab{% if page.url == item.link %} header-current-tab{% endif %}"
-                   href="{{ item.link }}"
+                        {% if item.link != null %} href="{{ item.link }}" {% endif %}
                         {% if item.target != null %} target="{{ item.target }}" {% endif %} >
                     {{ item.name }}
                 </a>
