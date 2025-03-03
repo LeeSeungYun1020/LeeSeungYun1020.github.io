@@ -4,126 +4,36 @@ title: 검색
 permalink: /search
 ---
 
-<style>
-  #search_box_outline {
-    padding: 7px;
-    border: 1px solid;
-    cursor: text;
-    z-index: 4;
+<script type="module">
+	import * as Search from '/assets/javascripts/search.js'
+	import Post from '/assets/javascripts/post.js'
 
-  }
+	const posts = []
+	let excerpt = ''
+  {% for post in site.posts %}
+	excerpt =
+		  {% if post.desc != null and post.desc != "" %} "{{ post.desc }}"
+		  {% else %} `{{ post.excerpt | split: '<p>' | slice: 1, 1 | first | split: '</p>' | first | strip_html }}`
+  {% endif %}
+	posts.push(new Post("{{ post.title }}", excerpt, "{{ post.url }}"))
+  {% endfor %}
 
-  #search_box {
-    color: #19191c;
-    line-height: 24px;
-    font-size: 16px;
-    width: 100%;
-    height: 24px;
-    border: none;
-    outline: none;
-    appearance: none;
-    background: transparent;
-  }
-
-  #search_root {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .margin-top-64 {
-    margin-top: 64px;
-  }
-
-  .search-result {
-    visibility: hidden;
-    position: absolute;
-  }
-</style>
-
-<script>
-  window.onload = () => {
-    onStart()
-
-    document.querySelector("#search_box").addEventListener("input", (event) => {
-      const searchText = event.target.value
-      if (searchText.length === 0) {
-        onStart()
-      } else {
-        const compare = searchText.toLowerCase()
-        let title = ""
-        let snippet = ""
-        let result = ""
-        {% for post in site.posts %}
-        title = "{{ post.title }}"
-        snippet =
-        {% if post.desc != null and post.desc != "" %}
-        "{{ post.desc }}"
-        {% else %}
-        "{{ post.excerpt | strip_html | strip_newlines | truncatewords: 45 }}"
-        {% endif %}
-
-        if (title.toLowerCase().includes(compare) || snippet.toLowerCase().includes(compare)) {
-          result += `
-            <a href="{{ post.url }}">
-              <div class="search-item">
-                <h3>{{ post.title }}</h3>
-                <div class="search-snippet">${snippet}</div>
-              </div>
-            </a>`
-        }
-        {% endfor %}
-
-        // TODO: 검색 -> 결과 있으면 onResult 없으면 onResultIsEmpty
-        if (result === "") {
-          onResultIsEmpty(searchText)
-        } else {
-          onResult(searchText, result)
-        }
-
-      }
-    });
-  }
-
-  function onStart() {
-    document.querySelector("#search_nothing").style.visibility = "visible"
-    document.querySelector("#search_result_list").style.visibility = "hidden"
-    document.querySelector("#search_result_empty").style.visibility = "hidden"
-  }
-
-  function onResultIsEmpty(searchText) {
-    document.querySelector("#search_nothing").style.visibility = "hidden"
-    document.querySelector("#search_result_list").style.visibility = "hidden"
-    document.querySelector("#search_result_empty").style.visibility = "visible"
-
-    document.querySelector(
-        "#search_empty_result_text").textContent = `"${searchText}"에 대한 검색 결과를 찾을 수 없어요.`
-  }
-
-  function onResult(searchText, result) {
-    document.querySelector("#search_nothing").style.visibility = "hidden"
-    document.querySelector("#search_result_list").style.visibility = "visible"
-    document.querySelector("#search_result_empty").style.visibility = "hidden"
-
-    document.querySelector("#search_result_list").innerHTML = result
-  }
+	window.onload = () => {
+		Search.init('.search-result')
+		document.querySelector('#search_box').addEventListener('input', (event) => {
+			Search.search(posts, event.target.value, '.search-result')
+		})
+	}
 </script>
 
 <div class="center-layout" id="search_root">
-  <div class="margin-top-64"></div>
-  <div id="search_box_outline">
-    <label>
-      <input id="search_box" maxlength="512" placeholder="검색" type="text" value="">
-    </label>
-  </div>
-  <div>
-    <div class="search-result" id="search_result_list">
-      <h3>검색 결과를 여기에 표시해요.</h3>
-    </div>
-    <div class="search-result" id="search_result_empty">
-      <h3 id="search_empty_result_text">에 대한 검색 결과를 찾을 수 없어요.</h3>
-    </div>
-    <div class="search-result" id="search_nothing">
-      <h3>검색을 시작해 보세요.</h3>
-    </div>
-  </div>
+	<div class="margin-top-64"></div>
+	<div id="search_box_outline">
+		<label>
+			<input id="search_box" maxlength="512" placeholder="검색" type="text" value="">
+		</label>
+	</div>
+	<div>
+		<div class="search-result"></div>
+	</div>
 </div>
