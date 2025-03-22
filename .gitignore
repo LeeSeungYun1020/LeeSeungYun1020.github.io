@@ -2,6 +2,7 @@ _site
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
+.parcel-cache
 package-lock.json
 vendor
 /.idea/workspace.xml

@@ -1,4 +1,4 @@
-import {dedent} from "./utils.js";
+import {dedent} from "./utils";
 
 export default class Post {
 	constructor(public title: string, public excerpt: string, public url: string) {
