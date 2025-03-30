@@ -4,26 +4,19 @@ title: 검색
 permalink: /search
 ---
 
+<script type="module" src="/assets/javascripts/search/views/search-view.js"></script>
 <script type="module">
-	import * as Search from '/assets/javascripts/search.js'
-	import Post from '/assets/javascripts/post.js'
+	import Post from '/assets/javascripts/search/models/post.js'
+	import { posts } from '/assets/javascripts/search/views/search-view.js'
 
-	const posts = []
 	let excerpt = ''
   {% for post in site.posts %}
 	excerpt =
-		  {% if post.desc != null and post.desc != "" %} "{{ post.desc }}"
-		  {% else %} `{{ post.excerpt | split: '<p>' | slice: 1, 1 | first | split: '</p>' | first | strip_html }}`
-  {% endif %}
+      {% if post.desc != null and post.desc != "" %} "{{ post.desc }}"
+	  {% else %} `{{ post.excerpt | split: '<p>' | slice: 1, 1 | first | split: '</p>' | first | strip_html }}`
+	  {% endif %}
 	posts.push(new Post("{{ post.title }}", excerpt, "{{ post.url }}"))
   {% endfor %}
-
-	window.onload = () => {
-		Search.init('.search-result')
-		document.querySelector('#search_box').addEventListener('input', (event) => {
-			Search.search(posts, event.target.value, '.search-result')
-		})
-	}
 </script>
 
 <div class="center-layout" id="search_root">
