@@ -21,11 +21,10 @@
     "parcel": "^2.14.1"
   },
   "targets": {
-    "post": {
+    "src": {
       "outputFormat": "esmodule",
       "source": [
-        "src/typescripts/search.ts",
-        "src/typescripts/post.ts"
+        "src/typescripts/**/*.ts"
       ],
       "distDir": "assets/javascripts",
       "isLibrary": true
