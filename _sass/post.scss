@@ -24,7 +24,7 @@
   min-height: 0;
 }
 
-.post-contents {
+#post-contents {
   width: 100%;
   height: auto;
   display: flex;
@@ -81,11 +81,11 @@
   padding-bottom: 0.5em;
 }
 
-.post-header h1 {
+.post-header .post-title {
   margin: 0;
 }
 
-.post-header h2 {
+.post-header .post-date {
   margin: 0;
   font-size: 14px;
 }
@@ -107,7 +107,7 @@
 
 // Table of contents
 
-.post-toc {
+#post-toc {
   width: var(--toc-width);
   position: absolute;
   max-height: 500px;

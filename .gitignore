@@ -8,6 +8,8 @@ vendor
 /.idea/workspace.xml
 /.idea/dictionaries/leeseungyun.xml
 /.idea/.name
+/.idea/*migration*
 /_posts/tem
 /_posts/test
 /node_modules
+*.js.map
