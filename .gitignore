@@ -3,13 +3,11 @@ _site
 .jekyll-cache
 .jekyll-metadata
 .parcel-cache
-package-lock.json
 vendor
-/.idea/workspace.xml
-/.idea/dictionaries/leeseungyun.xml
-/.idea/.name
-/.idea/*migration*
+/.idea/*
 /_posts/tem
 /_posts/test
 /node_modules
 *.js.map
+/assets/javascripts
+*.iml
