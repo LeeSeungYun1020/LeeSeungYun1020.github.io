@@ -4,7 +4,7 @@
   "description": "",
 
   "scripts": {
-    "build": "parcel build --no-cache --log-level verbose && jekyll build",
+    "build": "parcel build --log-level verbose && bundle exec jekyll build",
     "serve": "parcel build && bundle exec jekyll serve & parcel watch"
   },
   "repository": {
