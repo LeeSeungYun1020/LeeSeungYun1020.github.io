@@ -15,7 +15,7 @@ body {
 	#portfolio {
 		margin: 2em auto;
 		max-width: 900px;
-		color: rgb(55, 53, 47);
+    //color: rgb(55, 53, 47);
 	}
 }
 
@@ -39,7 +39,7 @@ body {
 		body {
 			margin: 2em auto;
 			max-width: 900px;
-			color: rgb(55, 53, 47);
+      //color: rgb(55, 53, 47);
 		}
 	}
 
@@ -805,8 +805,8 @@ body {
 	.checkbox {
 		display: inline-flex;
 		vertical-align: text-bottom;
-		width: 16;
-		height: 16;
+		width: 16px;
+		height: 16px;
 		background-size: 16px;
 		margin-left: 2px;
 		margin-right: 5px;
