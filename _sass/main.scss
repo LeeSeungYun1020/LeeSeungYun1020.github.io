@@ -275,7 +275,7 @@ main {
 
 .header-tab-trailing-icon {
   fill: var(--md-sys-color-on-secondary-container);
-  display: none;
+  margin-left: 8px;
 }
 
 #header-theme-change-text {
@@ -384,9 +384,7 @@ main {
   }
 
   .header-tab-trailing-icon {
-    display: unset;
     visibility: inherit;
-    margin-left: 8px;
   }
 
   #header-theme-change-text {

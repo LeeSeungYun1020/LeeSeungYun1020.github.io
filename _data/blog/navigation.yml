@@ -2,4 +2,6 @@
   link: /blog
 - name: 검색
   link: /search
-- name: 글
+- name: 소개
+  link: /about
+  target: _blank
