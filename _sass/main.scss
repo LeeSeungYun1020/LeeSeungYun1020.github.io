@@ -1,6 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@font-face {
+  font-family: 'Gowun Dodum';
+  src: url('/assets/fonts/GowunDodum-Regular.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/assets/fonts/JetBrainsMono-VariableFont_wght.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nanum Gothic Coding';
+  src: url('/assets/fonts/NanumGothicCoding-Regular.ttf');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Noto Sans KR';
+  src: url('/assets/fonts/NotoSansKR-VariableFont_wght.ttf');
+  font-display: swap;
+}
 
 .light {
   --md-sys-color-primary: rgb(33 106 77);
@@ -255,7 +275,7 @@ main {
 
 .header-tab-trailing-icon {
   fill: var(--md-sys-color-on-secondary-container);
-  visibility: hidden;
+  display: none;
 }
 
 #header-theme-change-text {
@@ -364,6 +384,7 @@ main {
   }
 
   .header-tab-trailing-icon {
+    display: unset;
     visibility: inherit;
     margin-left: 8px;
   }
