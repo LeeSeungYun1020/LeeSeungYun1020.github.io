@@ -1,11 +1,18 @@
-#home {
-
+.main-content {
+  background-image: url("/assets/images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .home-message {
+  width: fit-content;
   margin: 200px auto auto;
-  font-size: 3em;
+  padding: 10%;
+  line-height: 1.8em;
+  font-size: 2em;
   text-align: center;
   word-break: keep-all;
   white-space: pre-wrap;
+  color: var(--md-sys-color-on-surface-variant);
+  background-color: color-mix(in srgb, var(--md-sys-color-surface-container-low), transparent 40%);
 }
