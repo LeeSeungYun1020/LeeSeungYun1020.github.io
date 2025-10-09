@@ -102,8 +102,14 @@
 #post-toc {
   width: var(--toc-width);
   position: absolute;
-  max-height: 500px;
-  overflow: hidden;
+  max-height: 70%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-color: transparent transparent;
+}
+
+#post-toc:hover {
+  scrollbar-color: auto;
 }
 
 .post-toc-list {

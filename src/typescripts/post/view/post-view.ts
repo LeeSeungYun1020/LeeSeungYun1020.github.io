@@ -67,4 +67,5 @@ function indicateLocation(table: Table, contentsElement: HTMLElement, tableEleme
     target = items[index]
   }
   target.classList.add(className)
+  target.scrollIntoView({ behavior: "smooth", block: "center" });
 }
