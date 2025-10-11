@@ -1,4 +1,4 @@
-<div>
+<nav>
     <ul class="header-navigation" id="header-navigation">
         {% for item in include.menu %}
             <li class="header-tab-box {% if page.url == item.link %} header-current-tab-box{% endif %}">
@@ -44,6 +44,6 @@
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
         </svg>
     </button>
-</div>
+</nav>
 
-<script src="/assets/javascripts/navigation/views/navigation-tab.js"></script>
+<script type="module" src="/assets/javascripts/navigation/views/navigation-tab.js"></script>

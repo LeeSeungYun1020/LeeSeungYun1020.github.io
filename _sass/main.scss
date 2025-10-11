@@ -337,7 +337,13 @@ main {
   height: 60px;
 }
 
-// Responsive Web Design
+@media screen and (max-width: 710px) {
+  // 로고 길 때 네비게이션 탭 메뉴 마진 조정
+  .header-tab-box {
+    margin-left: 18px;
+  }
+}
+
 @media screen and (max-width: 640px) {
   :root {
     --footer-height: 140px;
@@ -362,7 +368,6 @@ main {
   }
 
   .header-navigation-button {
-    fill: var(--md-sys-color-on-surface-variant);
     display: inline-flex;
   }
 

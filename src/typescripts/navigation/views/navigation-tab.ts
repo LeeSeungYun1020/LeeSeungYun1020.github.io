@@ -24,6 +24,10 @@ fromEvent(document, 'DOMContentLoaded').subscribe(() => {
   }
 })
 
+fromEvent(window, 'resize').subscribe(() => {
+  document.getElementById("header-navigation")?.style?.removeProperty("visibility")
+})
+
 function toggleNavigationMenu(navigationMenu: HTMLElement | null) {
   if (!navigationMenu) return
   if (navigationMenu.style.visibility === "hidden") {
