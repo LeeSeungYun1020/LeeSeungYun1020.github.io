@@ -2,9 +2,7 @@
     <section id="footer-start">
         <div>
             <p class="footer-hello">
-                안녕하세요?
-                <br>
-                일상의 고민을 해결하는 개발자, 이승윤입니다.
+                {{ include.hello }}
             </p>
         </div>
         <div class="footer-icon-box">
@@ -21,6 +19,12 @@
         </div>
     </section>
     <section id="footer-end">
-        <object aria-label="icon" data="/assets/images/icon.svg" id="footer-main-icon" type="image/svg+xml"></object>
+        {% case include.iconType %}
+            {% when "blog" %}
+                <img src="/assets/images/blog/icon.png" alt="icon" id="footer-main-icon"/>
+            {% else %}
+                <object aria-label="icon" data="/assets/images/icon.svg" id="footer-main-icon"
+                        type="image/svg+xml"></object>
+        {% endcase %}
     </section>
 </footer>

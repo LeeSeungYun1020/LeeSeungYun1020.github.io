@@ -1,0 +1,33 @@
+{
+  "name": "leeseungyun1020",
+  "version": "1.0.0",
+  "description": "",
+
+  "scripts": {
+    "build": "parcel build --log-level verbose && bundle exec jekyll build",
+    "serve": "parcel build && bundle exec jekyll serve & parcel watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LeeSeungYun1020/LeeSeungYun1020.github.io.git"
+  },
+  "private": true,
+  "dependencies": {
+    "rxjs": "^7.8.2",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@parcel/transformer-typescript-types": "^2.14.1",
+    "parcel": "^2.14.1"
+  },
+  "targets": {
+    "src": {
+      "outputFormat": "esmodule",
+      "source": [
+        "src/typescripts/**/*.ts"
+      ],
+      "distDir": "assets/javascripts",
+      "isLibrary": true
+    }
+  }
+}

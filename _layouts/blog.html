@@ -1,0 +1,13 @@
+---
+layout: head
+---
+
+<link href="/assets/css/blog.css" rel="stylesheet">
+
+<div class="main-layout">
+    {% include header.html link="/blog" title="이롭: 이로운 기술 블로그" menu=site.data.blog.navigation %}
+    <div class="main-content">
+        {{ content }}
+    </div>
+    {% include footer.html hello="이롭은 일상의 고민을 해결하는 개발자 <a href='/'>이승윤</a>이 작성하고 있습니다." iconType="blog" %}
+</div>

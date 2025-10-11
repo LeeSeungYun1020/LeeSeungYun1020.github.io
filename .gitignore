@@ -2,9 +2,12 @@ _site
 .sass-cache
 .jekyll-cache
 .jekyll-metadata
+.parcel-cache
 vendor
-/.idea/workspace.xml
-/.idea/dictionaries/leeseungyun.xml
-/.idea/.name
+/.idea/*
 /_posts/tem
 /_posts/test
+/node_modules
+*.js.map
+/assets/javascripts
+*.iml

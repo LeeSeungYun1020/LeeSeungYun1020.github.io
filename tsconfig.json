@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "assets/javascripts",
+    "rootDir": "src/typescripts",
+    "strict": true
+  },
+  "include": [
+    "src/typescripts/**/*.ts"
+  ]
+}

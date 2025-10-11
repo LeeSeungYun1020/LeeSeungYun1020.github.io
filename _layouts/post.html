@@ -2,73 +2,28 @@
 layout: head
 ---
 
-<script src="/assets/javascripts/toc.js"></script>
+<link href="/assets/css/blog.css" rel="stylesheet">
+<link href="/assets/css/post.css" rel="stylesheet">
+<script type="module" src="/assets/javascripts/post/view/post-view.js"></script>
 
 <div class="post-layout">
-  {% include header.html %}
-  <main class="post-main">
-    <div class="post-contents" id="post-contents">
-      <div class="post-article-sidebar-box">
-        <article class="post-article">
-          <div class="post-header">
-            <h1>{{ page.title }}</h1>
-            <h2>{{ page.date | date:"%F" }}</h2>
-          </div>
+	{% include header.html link="/blog" title="이롭: 이로운 기술 블로그" menu=site.data.blog.navigation %}
+	<main class="post-main">
+		<div id="post-contents">
+			<div class="post-article-sidebar-box">
+				<article class="post-article">
+					<div class="post-header">
+						<p class="post-title">{{ page.title }}</p>
+						<p class="post-date">{{ page.date | date:"%F" }}</p>
+					</div>
 
-          {{ content }}
-        </article>
-        <aside class="post-sidebar">
-          <div class="post-toc">
-            <ul class="post-toc-list">
-              {% assign current_level = '1' %}
-              {% assign headings_split = content | split: "<h" %}
-              {% for line in headings_split %}
-              {% assign start_letter = line | slice: 0, 1 %}
-              {% if '0' < start_letter and start_letter <= '3' %}
-              {% assign heading_line = line | split: ">" %}
-              {% assign heading_id = heading_line[0] | split: "id=" | last | remove:'"' | remove:'\' %}
-              {% assign heading_content = heading_line[1] | split: "</" | first %}
-            {% comment %} <!-- open list tags, 리스트 중첩: 리스트 태그 열기 --> {% endcomment %}
-            {% if current_level < start_letter %}
-            {% for i in (current_level..start_letter) %}
-            {% if forloop.last %}
-            {% break %}
-            {% endif %}
-            <ul class="post-toc-list post-toc-list-h{{ start_letter }}">
-              {% endfor %}
-              {% assign current_level = start_letter %}
-              {% comment %} <!-- close list tags, 리스트 중첩: 리스트 태그 닫기 --> {% endcomment %}
-              {% elsif current_level > start_letter %}
-              {% for i in (start_letter..current_level) %}
-              {% if forloop.last %}
-              {% break %}
-              {% endif %}
-            </ul>
-            {% endfor %}
-            {% assign current_level = start_letter %}
-            {% endif %}
-            {% comment %} <!-- add list element 리스트 요소 추가 --> {% endcomment %}
-            <li class="post-toc-node">
-              <a id="toc-{{ heading_id }}" class="post-toc-item post-toc-item-h{{ start_letter }}" href="#{{ heading_id }}">
-                {{ heading_content }}
-              </a>
-            </li>
-            {% endif %}
-            {% endfor %}
-            {% comment %} <!-- close remain list tags 리스트 중첩: 리스트 태그 닫기 --> {% endcomment %}
-            {% if current_level > start_letter %}
-            {% for i in (start_letter..current_level) %}
-            {% if forloop.last %}
-            {% break %}
-            {% endif %}
-            </ul>
-            {% endfor %}
-            {% endif %}
-            </ul>
-          </div>
-        </aside>
-      </div>
-      {% include footer.html %}
-    </div>
-  </main>
+					{{ content }}
+				</article>
+				<aside class="post-sidebar">
+					<div id="post-toc"></div>
+				</aside>
+			</div>
+			{% include footer.html hello="이롭은 일상의 고민을 해결하는 개발자 <a href='/'>이승윤</a>이 작성하고 있습니다." iconType="blog" %}
+		</div>
+	</main>
 </div>
