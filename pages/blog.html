@@ -5,30 +5,34 @@ permalink: /blog
 ---
 
 <div class="center-layout">
-  <section id="blog-title-section">
-    <div id="blog-title-background">
-      <h1 id="blog-title-text">블로그</h1>
-    </div>
-  </section>
+    <section id="blog-title-section">
+        <div id="blog-title-background">
+            <h1 id="blog-title-text">블로그</h1>
+        </div>
+    </section>
 
-  <section id="blog-contents-section">
-    {% for post in site.posts %}
-    <a class="blog-contents" href="{{ post.url }}">
-      <div class="blog-content-text">
-        <h2 class="blog-contents-title">{{ post.title }}</h2>
-        <p class="blog-contents-desc">
-          {% if post.desc != null and post.desc != "" %}
-          {{ post.desc }}
-          {% else %}
-          {{ post.excerpt | split: '<p>' | slice: 1, 1 | first | split: '</p>' | first | strip_html }}
-        {% endif %}
-        </p>
-        <p class="blog-contents-date">{{ post.date | date:"%F" }}</p>
-      </div>
-      {% if post.image != null %}
-      <img class="blog-contents-image" src="{{ post.image }}" alt="{{ post.title }}">
-      {% endif %}
-    </a>
-    {% endfor %}
-  </section>
+    <section id="blog-contents-section">
+        {% for post in site.posts %}
+            <a class="blog-contents" href="{{ post.url }}">
+                <div class="blog-content-text">
+                    <h2 class="blog-contents-title">{{ post.title }}</h2>
+                    <p class="blog-contents-desc">
+                        {% if post.desc != null and post.desc != "" %}
+                            {{ post.desc }}
+                        {% else %}
+                            {% if post.excerpt contains "<p>" %}
+                                {{ post.excerpt | split: '<p>' | slice: 1, 1 | first | split: '</p>' | first | strip_html }}
+                            {% else %}
+                                {{ post.excerpt | strip_html }}
+                            {% endif %}
+                        {% endif %}
+                    </p>
+                    <p class="blog-contents-date">{{ post.date | date: "%F" }}</p>
+                </div>
+                {% if post.image != null %}
+                    <img class="blog-contents-image" src="{{ post.image }}" alt="{{ post.title }}">
+                {% endif %}
+            </a>
+        {% endfor %}
+    </section>
 </div>
