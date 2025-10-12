@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Android 데이터 바인딩에서 바인딩 어댑터 사용하기"
-tags: [ "binding", "app architecture", data binding", "binding adapter" ]
+tags: [ "binding", "app architecture", "data binding", "binding adapter" ]
 ---
 
 ## 데이터 바인딩과 바인딩 어댑터
@@ -132,7 +132,7 @@ fun setHeight(view: View, height: Number) {
 }
 ```
 
-편의상 `android` 네임스페이스의 `layout_width`, `layout_height`를 직접 수정하였지만 `android` 네임스페이스를 직접 지정하는 것은 권장되지 않으므로 주의가 필요하다.  
+편의상 `android:` 네임스페이스의 `layout_width`, `layout_height`를 직접 수정하였지만 `android:` 네임스페이스를 직접 지정하는 것은 권장되지 않으므로 주의가 필요하다.  
 
 ### ConstraintLayout에서 dimension ratio 지정하기
 
