@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Android 데이터 바인딩에서 바인딩 어댑터 사용하기"
+excerpt: "바인딩 어댑터로 레이아웃 파일에서 복잡한 표현식을 분리하는 방법과 다양한 활용 사례를 소개합니다."
 tags: [ "binding", "app architecture", "data binding", "binding adapter" ]
 ---
 

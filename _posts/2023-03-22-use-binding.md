@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Android 바인딩 사용하기"
+excerpt: "Activity와 Fragment에서 바인딩 사용 방법에 차이가 있다고? RecyclerView adapter에서 사용하는 방법까지 알려드립니다."
 tags: [ "binding", "app architecture", "view binding", "data binding" ]
 ---
 
