@@ -32,6 +32,7 @@
   margin-right: auto;
   box-sizing: border-box;
   flex-grow: 1;
+  padding-bottom: 3em;
 }
 
 .post-sidebar {
@@ -96,6 +97,16 @@
   font-size: 14px;
 }
 
+.footnotes {
+  margin-top: 3em;
+  border-top: 1px solid var(--md-sys-color-outline-variant);
+  overflow-wrap: anywhere;
+
+  ol {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+}
 
 // Table of contents
 
