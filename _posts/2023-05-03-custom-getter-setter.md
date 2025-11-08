@@ -56,7 +56,7 @@ setter에 검증 로직을 추가하여 일관성을 보장할 수 있다.
 
 ```kotlin
 class Guild {
-    private val players: List<Player>
+    private val players: List<Player> = listOf()
     val count get() = players.size
     val isEmpty get() = players.isEmpty()
     val isFull get() = players.size == 20
