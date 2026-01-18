@@ -56,7 +56,7 @@ setter에 검증 로직을 추가하여 일관성을 보장할 수 있다.
 
 ```kotlin
 class Guild {
-    private val players: List<Player>
+    private val players: List<Player> = listOf()
     val count get() = players.size
     val isEmpty get() = players.isEmpty()
     val isFull get() = players.size == 20
@@ -108,5 +108,5 @@ open class Auth {
 ## 정리
 
 맞춤 getter와 setter를 사용하면 값처럼 보이는 API를 제공하면서 내부 구현을 감출 수 있다.  
-프로퍼티 접근은 가볍고 빠르며 예측 가능해야 한다.
+프로퍼티 접근은 가볍고 빠르며 예측 가능해야 한다.  
 네트워크, I/O 작업같이 무거운 작업은 별도 함수로 분리해야 한다.
