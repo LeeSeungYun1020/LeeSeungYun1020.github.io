@@ -1,11 +1,9 @@
 ---
 layout: post
-title: "Android ViewModel"
+title: "ComponentActivity 없이 Android ViewModel 사용하기"
 tags: [ "view model", "app architecture", "compatibility" ]
 excerpt: "NativeActivity 또는 구형 프로젝트에서 ViewModel을 사용하는 방법과 원리를 분석합니다."
 ---
-
-# ViewModel
 
 ## 들어가기
 
