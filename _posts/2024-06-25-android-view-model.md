@@ -1,23 +1,25 @@
 ---
 layout: post
 title: "Android ViewModel"
-tags: [ "view model", "app architecture", "compatability" ]
+tags: [ "view model", "app architecture", "compatibility" ]
+excerpt: "NativeActivity 또는 구형 프로젝트에서 ViewModel을 사용하는 방법과 원리를 분석합니다."
 ---
 
 # ViewModel
 
 ## 들어가기
 
-android에서 ViewModel을 사용할 때 `androidx.lifecycle.ViewModel`을 상속받아 구현하는 것이 일반적이다.  
-하지만 lifecycle ViewModel은 ComponentActivity 이상을 사용하도록 요구하여
+Android에서 ViewModel을 사용할 때 `androidx.lifecycle.ViewModel`을 상속받아 구현하는 것이 일반적이다.  
+하지만 lifecycle ViewModel은 `ComponentActivity` 이상을 사용하도록 요구하여
 `android.app.Activity` 기반 프로젝트[^1]에서는 lifecycle ViewModel을 상속 받은 ViewModel을 바로 사용할 수 없다.
 
 [^1]: 이전 Android 프로젝트, Unity와 Unreal 같은 Game Engine 프로젝트, NativeActivity 프로젝트 등이 있다.
 
-구체적으로 viewModel 생성을 위임하는 viewModels 함수는 ComponentActivity 클래스의 확장함수로
+구체적으로 viewModel 생성을 위임하는 `viewModels` 함수는 `ComponentActivity` 클래스의 확장함수로
 `public inline fun <reified VM : ViewModel> ComponentActivity.viewModels` 형태이다.  
-ViewModelProvider 클래스를 이용하는 방법도 여의치 않은데 생성자가 ViewModelStore 또는 ViewModelStoreOwner를 인자로 요구하기 때문이다.  
-ComponentActivity가 ViewModelStoreOwner를 구현하고 있기 때문에 viewModels 위임 함수를 사용할 때와 동일한 제약이 가해진다.
+`ViewModelProvider` 클래스를 이용하는 방법도 여의치 않은데 생성자가 `ViewModelStore` 또는 `ViewModelStoreOwner`를 인자로 요구하기
+때문이다.  
+`ComponentActivity`가 `ViewModelStoreOwner`를 구현하고 있기 때문에 `viewModels` 위임 함수를 사용할 때와 동일한 제약이 가해진다.
 
 ```kotlin
 public interface ViewModelStoreOwner {
@@ -25,7 +27,7 @@ public interface ViewModelStoreOwner {
 }
 ```
 
-그렇다면 ComponentActivity를 사용하지 않는 환경에서는 ViewModel을 어떻게 구성해야 할까?
+그렇다면 `ComponentActivity`를 사용하지 않는 환경에서는 ViewModel을 어떻게 구성해야 할까?
 
 ## 기본 동작
 
@@ -33,13 +35,13 @@ AndroidX 및 lifecycle 라이브러리를 사용할 때, ViewModel이 어떻게 
 
 ### ViewModelStoreOwner와 ViewModelStore
 
-ComponentActivity 이상에서는 다음과 같이 ViewModel을 생성한다.
+`ComponentActivity` 이상에서는 다음과 같이 ViewModel을 생성한다.
 
 ```kotlin
 private val mainViewModel: MainViewModel by viewModels()
 ```
 
-ActivityViewModelLazy.kt 파일을 보면 viewModels 위임 함수 구현을 확인할 수 있다.
+`ActivityViewModelLazy.kt` 파일을 보면 `viewModels` 위임 함수 구현을 확인할 수 있다.
 
 ```kotlin
 @MainThread
@@ -60,7 +62,7 @@ public inline fun <reified VM : ViewModel> ComponentActivity.viewModels(
 }
 ```
 
-ViewModelLazy는 ViewModelLazy.kt 파일에 정의된 함수인데 storeProducer 인자로 viewModelStore를 전달한다.
+`ViewModelLazy`는 `ViewModelLazy.kt` 파일에 정의된 함수인데 `storeProducer` 인자로 `viewModelStore`를 전달한다.
 
 ```kotlin
 public class ViewModelLazy<VM : ViewModel> @JvmOverloads constructor(
@@ -90,12 +92,12 @@ public class ViewModelLazy<VM : ViewModel> @JvmOverloads constructor(
 }
 ```
 
-내부적으로 ViewModelProvider.create 함수를 호출하며 이 viewModelStore를 전달한다.  
-ComponentActivity에서는 viewModelStore를 어떻게 구현하고 있는걸까?
+내부적으로 `ViewModelProvider.create` 함수를 호출하며 이 `viewModelStore`를 전달한다.  
+그렇다면 `ComponentActivity`에서는 `viewModelStore`를 어떻게 구현하고 있는걸까?
 
 ### ComponentActivity 내부 동작
 
-ComponentActivity에서 viewModelStore와 관련 있는 부분만 모아 보았다.
+`ComponentActivity`에서 `viewModelStore`와 관련 있는 부분만 모아 보았다.
 
 ```kotlin
 open class ComponentActivity() : ViewModelStoreOwner {
@@ -149,9 +151,9 @@ open class ComponentActivity() : ViewModelStoreOwner {
 }
 ```
 
-viewModelStore를 get하면 ensureViewModelStore 함수가 호출된다.  
-_viewModelStore가 null이면 lastNonConfigurationInstance가 있는지 확인하여 복구하거나 새로 생성한다.  
-lastNonConfigurationInstance는 onRetainNonConfigurationInstance 함수에서 유지할 데이터를 저장한다.
+`viewModelStore`를 get하면 `ensureViewModelStore` 함수가 호출된다.  
+`_viewModelStore`가 null이면 `lastNonConfigurationInstance`가 있는지 확인하여 복구하거나 새로 생성한다.  
+`lastNonConfigurationInstance`는 `onRetainNonConfigurationInstance` 함수에서 유지할 데이터를 저장한다.
 
 ## Activity에서 데이터 유지
 
@@ -189,12 +191,12 @@ class LActivity : Activity() {
 }
 ```
 
-하지만, Activity를 직접 수정할 수 있는 경우, ComponentActivity나 AppCompatActivity를 상속받도록 수정하면 될 일이다.  
-ComponentActivity를 사용하지 않는 환경에서 표시될 수 있도록 Fragment를 만들어 제공해야 한다면 어떻게 해야 할까?
+하지만, `Activity`를 직접 수정할 수 있는 경우, `ComponentActivity`나 `AppCompatActivity`를 상속받도록 수정하면 되는 일이다.  
+`ComponentActivity`를 사용할 수 없는 환경에서 표시될 수 있도록 Fragment를 만들어 제공해야 한다면 어떻게 해야 할까?
 
 ## Fragment에서 데이터 유지
 
-Fragment.viewModels 확장함수에서는 createViewModelLazy 함수를 통해 ViewModel을 반환한다.
+`Fragment.viewModels` 확장함수에서는 `createViewModelLazy` 함수를 통해 ViewModel을 반환한다.
 
 ```kotlin
 @MainThread
@@ -284,9 +286,8 @@ public abstract class FragmentManager implements FragmentResultOwner {
 }
 ```
 
-부모가 있다면 부모에게서 nonConfig를 가져오고, Fragment의 host에게서 가져온다.
-host가 ViewModelStoreOwner를 구현하지 않는다면 `FragmentManagerViewModel(false)`로 FragmentManagerViewModel을
-생성한다.
+부모가 있다면 부모에게서 nonConfig를 가져오고, Fragment의 host에게서 가져온다.  
+host가 ViewModelStoreOwner를 구현하지 않는다면 `FragmentManagerViewModel(false)`로 FragmentManagerViewModel을 생성한다.
 
 ```java
 final class FragmentManagerViewModel extends ViewModel {
@@ -342,26 +343,27 @@ final class FragmentManagerViewModel extends ViewModel {
 }
 ```
 
-FragmentManagerViewModel은 ViewModelStore를 매핑, 저장한다.  
-Fragment의 ViewModelStore는 상위 Fragment 또는 Host Activity의 ViewModelStore로 관리된다.
+`FragmentManagerViewModel`은 `ViewModelStore`를 매핑, 저장한다.  
+`Fragment`의 `ViewModelStore`는 상위 Fragment 또는 Host Activity의 `ViewModelStore`로 관리된다.
 
-앞에서 살펴 보았듯, Activity는 onRetainNonConfigurationInstance 함수를 통해 ViewScope를 보존한다.  
-구성이 변경되어도 FragmentManagerViewModel이 유지되므로 Fragment의 viewModelStore도 유지된다.
+앞에서 살펴 보았듯, Activity는 `onRetainNonConfigurationInstance` 함수를 통해 `ViewScope`를 보존한다.  
+구성이 변경되어도 `FragmentManagerViewModel`이 유지되므로 Fragment의 `viewModelStore`도 유지된다.
 
-단순하게 생각하면 Activity에서 뭔가를 해주지 않으면 어쩌지 못하는 것 아닌가 싶다.
+Activity가 `ViewModelStoreOwner`가 아니거나, `onRetainNonConfigurationInstance`를 통해 상태를 유지해주지 않으면 하위
+Fragment들도 ViewModel을 정상적으로 유지할 수 없게 된다.  
+이렇게 생각해 보면 Activity에서 뭔가를 해주지 않으면 어쩌지 못하는 것 아닌가 싶다.
 
 ## 방법 1: lifecycle-viewmodel 사용 가능 환경
 
-ViewModel 동작의 핵심은 무엇인가?  
-바로 ViewModelStore이다.  
-조금 더 생각해보면 ViewModelStore가 있으면 ViewModel이 동작할 수 있음을 알 수 있다.  
-ViewModelStore가 구성 변경 시에 유지되려면 어떻게 해야 할까?
+ViewModel 동작의 핵심은 ViewModelStore이다.    
+`ViewModelStore`가 구성 변경 시 살아남을 수 있다면 ViewModel이 동작할 수 있다.
 
 ### 보관용 Fragment
 
-Activity는 수정할 수 없으므로 보관용 Fragment 하나를 유지하여 ViewModelStore를 들고 있게 해보았다.
+Activity는 수정할 수 없으므로, 보관용 Fragment 하나를 유지하여 ViewModelStore를 들고 있게 해보았다.
 
 ```kotlin
+// android.app.Fragment 사용
 class LFragment : Fragment(), ViewModelStoreOwner {
     override val viewModelStore: ViewModelStore = ViewModelStore()
 
@@ -395,6 +397,8 @@ class LFragment : Fragment(), ViewModelStoreOwner {
 프로세스가 종료되어 앱이 재시작되면 FragmentManager 자체 상태가 초기화되어 보관용 Fragment도 사라지기 때문이다.
 
 ### 보관용 Fragment 사용 예시
+
+Androidx가 아닌 `android.app.Fragment` 계열에서 보관용 Fragment를 이용하여 ViewModel을 사용하는 예시이다.
 
 ```kotlin
 internal class AViewModel : ViewModel() {
@@ -455,10 +459,10 @@ class AFragment : DialogFragment() {
 }
 ```
 
-유의할 점은 AFragment는 LFragment를 상속 받지 않았다는 것이다.  
-LFragment는 UI와 분리된 보관용 Fragment로 `retainInstance = true`로 상태를 유지한다.  
-AFragment는 일반적 Fragment의 생명주기를 따른다.  
-AFragment가 제거되고 다른 Fragment가 추가되어도 LFragment는 유지되어 ViewModel 공유가 가능하다.
+유의할 점은 `AFragment`는 `LFragment`를 상속 받는게 아니라는 점이다.  
+`LFragment`는 UI와 분리된 보관용 Fragment로 `retainInstance = true`로 상태를 유지한다.  
+`AFragment`는 일반적 Fragment의 생명주기를 따르며, `AFragment`가 제거되고 다른 Fragment가 추가되어도 `LFragment`는 유지되어
+ViewModel 공유가 가능하다.
 
 > [!NOTE]
 > 덧붙여 viewModel에서 stateFlow를 사용할 때는 onStart에 작업을 시작하여 변경 사항을 수신하고 onStop에서 작업을 취소하도록 구성하였다.  
@@ -481,11 +485,11 @@ AFragment가 제거되고 다른 Fragment가 추가되어도 LFragment는 유지
 
 ## 방법 2: AndroidX가 사용 불가능한 환경
 
-ViewModel 구현에 사용된 일부 구현을 참고하여 Store를 저장하고 관리하는 로직을 추가해 주어야 한다.
+AndroidX 라이브러리조차 사용할 수 없다면, ViewModel 구현에 사용된 일부 구현을 참고하여 Store를 저장하고 관리하는 로직을 구현해야 한다.
 
 ### 보관용 Fragment 수정
 
-앞서 lifecycle-viewmodel 사용 가능 환경에서와 같이 보관용 Fragment인 LFragment를 이용하는 아이디어는 유지한다.  
+앞서 lifecycle-viewmodel 사용 가능 환경에서와 같이 보관용 Fragment인 LFragment를 이용하는 아이디어를 유지한다.  
 여기에 viewModelStore를 관리할 수 있는 로직을 추가한다.
 
 ```kotlin
@@ -520,8 +524,8 @@ class LFragment : Fragment() {
 
 ### ViewModelStore 관리
 
-ViewModelStore 관리는 android의 메인 스레드가 하나라는 점을 이용한다.  
-of 함수의 get, put과 clear 함수의 remove는 동시에 실행되지 않는다.
+ViewModelStore 관리는 android의 메인 스레드가 하나라는 점을 이용하여 동시성 문제를 회피한다.  
+`of` 함수의 `get`, `put`과 `clear` 함수의 `remove`는 동시에 실행되지 않는다.
 
 ```kotlin
 object LViewModelStoreHolder {
@@ -551,7 +555,8 @@ class LViewModelProvider internal constructor(private val storeId: String) {
         map.clear()
     }
 
-    private fun <T : LViewModel> instantiate(kc: KClass<T>): T { // factory 메서드 호출 시도
+    private fun <T : LViewModel> instantiate(kc: KClass<T>): T {
+        // factory 메서드 호출 시도
         companionFactory(kc)?.let { return it.create() }
 
         // 인자 없는 생성자 호출 시도
@@ -663,7 +668,7 @@ class BFragment : DialogFragment() {
 ### ViewModelScope 구현
 
 그렇다면 viewModelScope는 어떻게 사용할 수 있을까?  
-viewModelScope는 createViewModelScope 함수로 구성된다.
+AndroidX의 viewModelScope 구현을 살펴보면, createViewModelScope 함수로 scope가 구성된다.
 
 ```kotlin
 internal const val VIEW_MODEL_SCOPE_KEY =
@@ -731,17 +736,14 @@ lifecycle-viewmodel 라이브러리를 사용할 수 있다면 ViewModelStore를
 
 내용을 간단하게 정리해 보면 다음과 같다.
 
-| 구분                | 방법 1: lifecycle-viewmodel 사용 가능 환경                   | 방법 2: AndroidX 불가 환경                                               |
-|-------------------|------------------------------------------------------|--------------------------------------------------------------------|
-| 전제 조건             | AndroidX 라이브러리 사용 가능                                 | AndroidX 사용 불가(구형 Activity/Fragment 환경)                            |
-| 핵심 아이디어           | 보관용 Fragment를 `ViewModelStoreOwner`로 두어 ViewModel 유지 | 보관용 Fragment + 커스텀 `ViewModelStoreHolder` / `ViewModelProvider` 구현 |
-| ViewModel 생성      | `ViewModelProvider.create(holder.viewModelStore)` 사용 | `LViewModelProvider.create(holder.storeId)[VM::class]` 사용          |
-| ViewModelStore 유지 | Fragment의 `retainInstance = true` 활용                 | 커스텀 Store 관리(Map 기반, main thread 사용)                               |
-| Scope 처리          | AndroidX라면 `viewModelScope` 그대로 사용 가능                | `Dispatchers.Main.immediate + SupervisorJob()` 기반 커스텀 Scope 구현     |
-| 장점                | lifecycle-viewmodel 그대로 활용                           | AndroidX 의존 없이 동일한 개념 구현 가능                                        |
-| 한계                | 보관용 Fragment 추가 필요                                   | API 직접 구현/관리 필요                                                    |
+| 구분                | 방법 1: lifecycle-viewmodel 사용 가능 환경                                               | 방법 2: AndroidX 불가 환경                                               |
+|-------------------|----------------------------------------------------------------------------------|--------------------------------------------------------------------|
+| 전제 조건             | AndroidX 라이브러리 사용 가능                                                             | AndroidX 사용 불가(구형 Activity/Fragment 환경)                            |
+| 핵심 아이디어           | 보관용 Fragment를 `ViewModelStoreOwner`로 두어 ViewModel 유지                             | 보관용 Fragment + 커스텀 `ViewModelStoreHolder` / `ViewModelProvider` 구현 |
+| ViewModel 생성      | lifecycle-viewmodel 그대로 활용(`ViewModelProvider.create(holder.viewModelStore)` 사용) | 커스텀(`LViewModelProvider.create(holder.storeId)[VM::class]` 사용)     |
+| ViewModelStore 유지 | Fragment의 `retainInstance = true` 활용                                             | Fragment + 커스텀 Store 관리(Map 기반, main thread 사용)                    |
+| Scope 처리          | lifecycle-viewmodel `viewModelScope` 사용                                          | `SupervisorJob` 기반 커스텀 Scope 구현                                    |
+| 장점                | lifecycle-viewmodel 그대로 활용                                                       | AndroidX 의존 없이 동일한 개념 구현                                           |
 
 제한된 환경에서 개발을 진행하는 것은 어렵고 짜증나는 일일 수 있다.  
-단지 우리는 최신 기술과 기법을 사용할 수 없다고 말하고 넘어갈 수도 있다.  
-그러나 그런 라이브러리도 결국 누군가 구현한 것이다.  
-조금 들여다보면 비슷하게나마 우리 방식에 맞는 적용법을 찾을 수 있지 않을까?
+그러나 라이브러리 내부 원리를 들여다보면, 비슷하게나마 우리 상황에 맞는 해결책을 찾아낼 수 있다.
