@@ -2,8 +2,8 @@
   link: /
 - name: 소개
   link: /about
-- name: 포트폴리오
-  link: /portfolio
+#- name: 포트폴리오
+#  link: /portfolio
 - name: 블로그
   link: /blog
   target: _blank
